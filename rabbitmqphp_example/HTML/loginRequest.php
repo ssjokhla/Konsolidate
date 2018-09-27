@@ -14,20 +14,19 @@ else
   $msg = "test message";
 }
 
-/**/
 
-$user = $_GET["user"];
-$password = $_GET["password"];
+//$user = $_GET["user"];
+//$password = $_GET["password"];
 
-/**/
 
 $request = array();
 $request['type'] = "login";
-$request['username'] = $user;
-$request['password'] = $password;
+$request['username'] = $_GET['username'];
+$request['password'] = $_GET['password'];
 $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);
 
 $payload = json_encode($response);
 echo $payload;
+?>
