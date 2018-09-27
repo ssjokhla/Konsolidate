@@ -1,7 +1,7 @@
 <?php
 include ("Account.php");
 /*MAIN PROGRAM*/
-$db = mysqli_connecti($hostname, $username, $password, $project);
+$db = mysqli_connect($hostname, $username, $password, $project);
 mysqli_select_db($db, $project);
 
 $user = mysql_real_escape_string($_POST['user']);

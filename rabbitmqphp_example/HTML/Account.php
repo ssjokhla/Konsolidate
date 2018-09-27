@@ -1,8 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
 <?php
 
-$hostname = "";
-$username = "";
-$project = "";
-$password = "";
+getdata("user", $user);
+getdata("password", $pass);
 
+print Answer:  $user;
 ?>
+</body>
+</html>
