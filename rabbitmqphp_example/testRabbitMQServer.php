@@ -7,6 +7,7 @@ require_once('rabbitMQLib.inc');
 function doLogin($username,$password)
 {
     $con = mysqli_connect("localhost", "admin", "password", "testDB");
+    //$con = mysqli_connect("192.168.0.108", "admin", "password", "testDB");
     mysqli_select_db($con, "testDB");
     $s = "select * from members where username = '$username' and password = '$password'";
 
