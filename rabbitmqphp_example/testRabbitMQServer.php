@@ -6,20 +6,24 @@ require_once('rabbitMQLib.inc');
 
 function doLogin($username,$password)
 {
-    $con = mysqli_connect("localhost", "admin", "password", "testDB");
+   //$con = mysqli_connect("localhost", "admin", "password", "testDB");
+   $con = mysqli_connect("192.168.0.106", "admin", "password", "testDB");
     //$con = mysqli_connect("192.168.0.108", "admin", "password", "testDB");
     mysqli_select_db($con, "testDB");
+    //$s = "select * from members where username = '$username' and password = '$password'";
     $s = "select * from members where username = '$username' and password = '$password'";
-
+	echo "SQL Statement: $s";
     //$s = "select * from members where username = 'test' and  password = 'password'";
     $t = mysqli_query($con, $s);
     $rowCount = mysqli_num_rows($t);
-    if($rowCount == 1)
+    if($rowCount > 0)
     {
+	    echo "Successful login";
 	    return "Successful Login";
     }
     else
     {
+	    echo "Error in logging in";
 	    return "Error";
     }
     // lookup username in databas
