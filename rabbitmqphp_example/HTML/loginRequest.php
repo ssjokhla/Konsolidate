@@ -1,7 +1,7 @@
 <?php
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/path.inc');
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/get_host_info.inc');
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
+require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/path.inc');
+require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/get_host_info.inc');
+require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
 
 
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
