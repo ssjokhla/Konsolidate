@@ -4,10 +4,9 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
 //$test = $_SERVER['REMOTE_ADDR'];
-$IP = "127.0.0.1";
-function logError($IP,$message)
+function logError($message)
 {
-//	$IP = $_SERVER['REMOTE_ADDR'];
+	$IP = shell_exec('hostname -I');
 	$client = new rabbitMQClient("testRabbitMQ.ini", "logServer");
 	$request = array();
 	$request['type'] = "log";

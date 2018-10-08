@@ -26,7 +26,7 @@ function doLogin($username,$password)
     {
 	    echo "Error in logging in";
 	    //Send error to listener
-	    logError("127.0.0.1","Authentication Failed when logging in from HTML.");
+	    logError("Authentication Failed when logging in from HTML.");
 	    //error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
 	    return "Error";
     }
