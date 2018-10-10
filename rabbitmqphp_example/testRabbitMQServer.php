@@ -11,9 +11,9 @@ function doLogin($username,$password)
    //$con = mysqli_connect("192.168.0.112", "admin", "password", "testDB");
     //$con = mysqli_connect("192.168.0.108", "admin", "password", "testDB");
     mysqli_select_db($con, "testDB");
-    //$s = "select * from members where username = '$username' and password = '$password'";
     $s = "select * from members where username = '$username' and password = '$password'";
-	echo "SQL Statement: $s";
+    //$s = "select * from members where username = '$username' and password = '$password'";
+    //echo "SQL Statement: $s";
     //$s = "select * from members where username = 'test' and  password = 'password'";
     $t = mysqli_query($con, $s);
     $rowCount = mysqli_num_rows($t);
