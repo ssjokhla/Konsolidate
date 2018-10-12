@@ -28,7 +28,7 @@ function doLogin($username,$password)
 	    //Send error to listener
 	    logError("Authentication Failed when logging in from HTML.");
 	    //error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
-	    return "Error";
+	    return "Bad Login";
     }
     // lookup username in databas
     // check password
