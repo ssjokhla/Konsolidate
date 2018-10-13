@@ -3,9 +3,10 @@
 import csv,json
 import sys
 
-def convertToJson(str):
-    print json.dumps(list(csv.reader(open(str))))
+csvfile = open('Car_SampleData.csv', 'r')
+jsonfile = open('data.json', 'w')
 
-
-
-convertToJson(sys.argv[1:])
+fieldnames = ("1","2","3","4","5","6")
+reader = csv.DictReader( csvfile, fieldnames)
+out = json.dumps( [row for row in reader])
+jsonfile.write(out)
