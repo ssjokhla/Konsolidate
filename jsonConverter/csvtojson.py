@@ -3,10 +3,11 @@
 import csv,json
 import sys
 
-csvfile = open('Car_SampleData.csv', 'r')
-jsonfile = open('data.json', 'w')
+csvfile = open('testData.csv', 'r')
+jsonfile = open('testData.json', 'w')
 
-fieldnames = ("1","2","3","4","5","6")
+fieldnames = ("Time","Par1","Par2","Par3","Level","Date")
 reader = csv.DictReader( csvfile, fieldnames)
-out = json.dumps( [row for row in reader])
-jsonfile.write(out)
+for row in reader:
+    json.dump(row,jsonfile)
+    jsonfile.write('\n')
