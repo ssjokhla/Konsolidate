@@ -3,6 +3,7 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
+include('myFunctions.php');
 
 function doLogin($username,$password)
 {
@@ -24,6 +25,9 @@ function doLogin($username,$password)
     else
     {
 	    echo "Error in logging in";
+	    //Send error to listener
+	    logError("Authentication Failed when logging in from HTML.");
+	    //error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
 	    return "Error";
     }
     // lookup username in databas
