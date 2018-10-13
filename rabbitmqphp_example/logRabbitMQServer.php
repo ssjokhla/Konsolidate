@@ -3,9 +3,9 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
-include('myFunctions.php');
+//include('myFunctions.php');
 
-    function requestProcessor($request)
+function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);

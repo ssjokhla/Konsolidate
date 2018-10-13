@@ -25,4 +25,3 @@ function getHostInfo(array $extra = NULL)
 }
 
 ?>
-
