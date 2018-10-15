@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/hp
 <?php
 require_once('path.inc');
 require_once('get_host_info.inc');
@@ -7,22 +7,13 @@ include('myFunctions.php');
 
 function doLogin($username,$password)
 {
-<<<<<<< HEAD
-    $con = mysqli_connect("192.168.0.106", "admin", "password", "testDB");
-=======
    $con = mysqli_connect("localhost", "admin", "password", "testDB");
    //$con = mysqli_connect("192.168.0.112", "admin", "password", "testDB");
->>>>>>> 8ded33110a5d9d6d6699bd38004c50cd3e481e0d
     //$con = mysqli_connect("192.168.0.108", "admin", "password", "testDB");
     mysqli_select_db($con, "testDB");
     //$s = "select * from members where username = '$username' and password = '$password'";
-    $s = "select * from members where username = '$username' and password = '$password'";
-<<<<<<< HEAD
-    echo "S is: $s";
-
-=======
+    $s = "select * from members where username = '$username' and passwordd = '$password'";
 	echo "SQL Statement: $s";
->>>>>>> 8ded33110a5d9d6d6699bd38004c50cd3e481e0d
     //$s = "select * from members where username = 'test' and  password = 'password'";
     $t = mysqli_query($con, $s);
     $rowCount = mysqli_num_rows($t);
@@ -33,15 +24,10 @@ function doLogin($username,$password)
     }
     else
     {
-<<<<<<< HEAD
-	    echo $username;
-	    echo $password;
-=======
 	    echo "Error in logging in";
 	    //Send error to listener
 	    logError("Authentication Failed when logging in from HTML.");
 	    //error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
->>>>>>> 8ded33110a5d9d6d6699bd38004c50cd3e481e0d
 	    return "Error";
     }
     // lookup username in databas
