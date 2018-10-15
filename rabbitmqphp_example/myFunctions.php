@@ -21,33 +21,21 @@ function logError($message)
 
 function doLogin($username,$password)
 {
-    //Establishing Connection to MongoDB
-    $connection = new MongoDB\Driver\Manager("mongodb://admin:password@localhost:27017");
-    //Setting up Query for authentication
-    $filter = array('username'=>$username,'password'=>$password);
-    $options = array('limit'=>1);
-    //Writing the Query for authentication
-    $query = new MongoDB\Driver\Query($filter, $options);
-    //Executing the Query
-    $rows = $connection->executeQuery('TestDB.members', $query);
-    $rowCounter = 0;
-    //Checking if Authentication succeeded or failed
-    foreach($rows as $row)
+   $con = mysqli_connect("localhost", "admin", "password", "testDB");
+    mysqli_select_db($con, "testDB");
+    $s = "select * from members where username = '$username' and password = '$password'";
+    $t = mysqli_query($con, $s);
+    $rowCount = mysqli_num_rows($t);
+    if($rowCount > 0)
     {
-        $rowCounter = $rowCounter + 1;
-        var_dump($row);
-    }
-    if($rowCounter > 0)
-    {
-        echo "Successful Login.";
-        return "Successful Login";
+	    echo "Successful Login.";
+	    return "Successful Login\n";
     }
     else
     {
-        echo "Error in Logging in";
-	//Logging an Error if the authentication was bad (Mainly a check to see if logError function is working)
-        logError("Authentication Failed when logging in from HTML.");
-        return "Bad Login";
+	    echo "Error in logging in";
+	    logError("Authentication Failed when logging in from HTML.");
+	    return "Bad Login\n";
     }
     return true;
     //return false if not valid
