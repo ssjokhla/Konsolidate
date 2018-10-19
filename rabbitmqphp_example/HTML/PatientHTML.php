@@ -1,3 +1,13 @@
+<?php
+include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
+session_start();
+?>
+
+
+
+<?php
+	if(gateKeeper("login.html")){
+?>
 <!DOCTYPE html>
 
 <style type>
@@ -18,5 +28,10 @@
 <center>
 <body id = "body">
 	[Patient Homepage] <br>
+
+	<br><br><br><a href = "logout.php">[LOGOUT]</a>
 </body>
 
+<?php
+	}
+?>

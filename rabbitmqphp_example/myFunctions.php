@@ -19,7 +19,7 @@ function logError($message)
 
 function pageLoader($path)
 {
-	header("Refresh:5, url=$path");
+	header("Refresh: 3; url=$path");
 }
 
 function doLogin($username,$password)
@@ -32,12 +32,13 @@ function doLogin($username,$password)
     //$s = "select * from members where username = 'test' and  password = 'password'";
     $t = mysqli_query($con, $s);
     $rowCount = mysqli_num_rows($t);
+
     if($rowCount > 0)
     {
 	  echo "Successful Login";
-	  //return "Successful Login";
-	  $test = 20;
-	  return $test;
+	  $row = $t->fetch_assoc();
+	  $currentRole = $row['roles'];
+	  return $currentRole;
     }
     else
     {
@@ -71,3 +72,16 @@ function requestProcessor($request)
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
 
+function gateKeeper($path)
+{
+	if(!isset($_SESSION["logged"]))
+	{
+		echo "Failed Gatekeeper Test Redirecting to homepage.";
+		pageLoader($path);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
