@@ -26,8 +26,8 @@ function doLogin($username,$password)
 {
    global $test;
    $con = mysqli_connect("localhost", "admin", "password", "testDB");
-    mysqli_select_db($con, "testDB");
-    $s = "select * from members where username = '$username' and password = '$password'";
+   mysqli_select_db($con, "testDB");
+    $s = "select * from members where username = '$username' and password = SHA2('$password',512)";
 	echo "SQL Statement: $s";
     //$s = "select * from members where username = 'test' and  password = 'password'";
     $t = mysqli_query($con, $s);
@@ -72,11 +72,11 @@ function requestProcessor($request)
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
 
-function gateKeeper($path)
+function gateKeeperLogin($path)
 {
 	if(!isset($_SESSION["logged"]))
 	{
-		echo "Failed Gatekeeper Test Redirecting to homepage.";
+		echo "Failed Gatekeeper Test: | Not logged in | Redirecting to homepage.";
 		pageLoader($path);
 		return false;
 	}
@@ -85,3 +85,18 @@ function gateKeeper($path)
 		return true;
 	}
 }
+
+function gateKeeperRole($path, $currRole)
+{
+	if($_SESSION["user"] != $currRole)
+	{
+		echo "Failed Gatekeeper Test: | Not correct user | Redirecting to homepage.";
+		pageLoader($path);
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
