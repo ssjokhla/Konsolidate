@@ -8,12 +8,14 @@ function logError($message)
 {
 	//Saving our IP Address to a variable
 	$IP = shell_exec('hostname -I');
+	$Date = shell_exec('date');
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "logServer");
 	$request = array();
 	$request['type'] = "log";
 	//Replace $IP with IP from ifconfig
 	$request['IP_ADDR'] = $IP;
+	$request['DATE'] = $Date;
 	$request['message'] = $message;
 	//Sending to logQueue
 	$client->send_request($request);
@@ -57,7 +59,7 @@ function requestProcessor($request)
       return doValidate($request['sessionId']);
     //Setting up another case to run when we run logError
     case "log":
-    $message = "IP_Address: " . $request['IP_ADDR'] . "Message: " . $request['message'] . "\n\n";
+    $message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
     error_log($message,3,"Logs/master.log");
 
   }
