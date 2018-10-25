@@ -24,7 +24,6 @@ $response = $client->send_request($request);
 //$response = $client->publish($request);
 
 echo "client received response: ".PHP_EOL;
-//print_r($response);
 print_r($msg);
 echo "\n\n";
 
