@@ -15,13 +15,13 @@
 		{
 		  echo "Please Choose another username";
 		  logError("Username already in database");
-		  return "Error"
+		  return "Error";
 		}
 
 		else
 		{
 		$r = "Insert into members (Username, Password, Role)
-		Values('$username','$password','$role')";
+		Values('$username', SHA2('$password',512),'$role')";
 		$tr= mysqli_query($con,$r);
 		return "Complete";
 		}
