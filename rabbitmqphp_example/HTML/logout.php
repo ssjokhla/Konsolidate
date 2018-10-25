@@ -2,8 +2,8 @@
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
 
-gateKeeper("login.html");
-
+gateKeeperLogin("login.html");
+//gateKeeperRole("login.html");
 $_SESSION = array();
 
 session_destroy();

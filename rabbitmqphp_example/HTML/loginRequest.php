@@ -37,19 +37,19 @@ switch($payload)
 {
 	case '"patient"':
 		$_SESSION["logged"] = true;			// Logging the patient user
-		//$_SESSION["user"] = "patient";	
+		$_SESSION["user"] = "patient";	
 		echo "Successful Patient Login \n Redirecting now...";
 		pageLoader("PatientHTML.php");
 		break;
 	case '"researcher"':
 		$_SESSION["logged"] = true;			// Logging the researcher user
-		//$_SESSION["user"] = "researcher";	
+		$_SESSION["user"] = "researcher";	
 		echo "Successful Researcher Login \n Redirecting now...";
 		pageLoader("ResearcherHTML.php");
 		break;
 	case '"HCP"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
-		//$_SESSION["user"] = "HCP";		
+		$_SESSION["user"] = "HCP";		
 		echo "Successful HCP Login \n Redirecting now...";
 		pageLoader("HCPHTML.php");
 		break;

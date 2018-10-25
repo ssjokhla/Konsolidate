@@ -6,7 +6,7 @@ session_start();
 
 
 <?php
-	if(gateKeeper("login.html")){
+	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "patient")){
 ?>
 <!DOCTYPE html>
 
@@ -29,7 +29,9 @@ session_start();
 <body id = "body">
 	[Patient Homepage] <br>
 
-	<br><br><br><a href = "logout.php">[LOGOUT]</a>
+	<form action = "logout.php" method = "get">
+		<input type = submit value = "Back">
+	</form>
 </body>
 
 <?php

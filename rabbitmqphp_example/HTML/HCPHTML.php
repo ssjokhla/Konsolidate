@@ -1,14 +1,13 @@
 <?php
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
-//gateKeeper("login.html");
 ?>
 
 
 
 
 <?php
-	if(gateKeeper("login.html")){
+	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 ?>
 <!DOCTYPE html>
 
@@ -34,11 +33,16 @@ session_start();
 		Select a file: <input type = "file" name = "myFile" id = "myFile"><br><br>
 		<input type = "submit" value = "Upload File" name = "submit">
 	</form>
-	<?php
-		gateKeeper("login.html");
-	?>
 
-	<br><br><br><a href = "logout.php">[LOGOUT]</a>
+
+	<form action = "viewReports.php" method = "get">
+		<input type = submit value = "View Your Reports">
+	</form>
+
+
+	<form action = "logout.php" method = "get">
+		<input type = submit value = "Back">
+	</form>
 </body>
 
 <?php

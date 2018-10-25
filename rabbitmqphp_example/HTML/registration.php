@@ -1,29 +1,34 @@
 <?php
+/*
+include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 	if(isset($_GET['Register']))
 	{
+		$success = 0;
 		$username=$_GET['username'];
 		$password=$_GET['password'];
-		$role=$_GET['role'];
+		$role=$_GET['roles'];
 		$con = mysqli_connect("localhost", "admin", "password", "testDB");
 		mysqli_select_db($con, "testDB");
 		$s = "select * from members where username = '$username'";
-		echo "SQL Statement: $s";
+	//	echo "SQL Statement: $s";
 		$t = mysqli_query($con, $s);
 		$rowCount = mysqli_num_rows($t);
 		if($rowCount > 0)
 		{
-		  echo "Please Choose another username";
-		  logError("Username already in database");
-		  return "Error";
+		  	//echo "Please Choose another username";
+		  	logError("Username already in database");
+			//return "Error";
 		}
 		else
 		{
-		$r = "Insert into members (Username, Password, Role)
-		Values('$username', SHA2('$password',512),'$role')";
-		$tr= mysqli_query($con,$r);
-		return "Complete";
+			$success = 1;
+			$r = "Insert into members (username, password, roles)
+			Values('$username', SHA2('$password',512),'$role')";
+			$tr= mysqli_query($con,$r);
+			//return "Complete";
 		}
 	}
+ */ 	
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +45,8 @@
 	}
 	</style>
 
-	<form action = "" method = "get">
+<!--	<form action = "" method = "get"> -->
+	<form action = "registrationChecker.php" method = "get">
 	<center>
 	<body id = "body">
 		[Register] <br> 
@@ -51,12 +57,39 @@
 		Enter Password: <br>
 		
 		Choose Your Role:
-		<select name="role" id="role">
-			<option value="Patient">Patient</option>
+		<select name="roles" id="roles">
+			<option value="patient">Patient</option>
 			<option value="HCP">HCP</option>
-			<option value="Researcher">Researcher</option
+			<option value="researcher">Researcher</option>
 		</select> <br>
 		
-	<input type = submit name = "Register" value = "Button">
+	<input type = submit name = "Register" value = "Register">
+	</form>
+
+	<form action = "login.html" method = "get">
+	<input type = submit value = "Back"/>
+	</form>
+
+<!--
+	<br><br><br><a href = "login.html"> [Back to Homepage] </a>
+
+	<button onclick = "message()" name = "Register" value = "Register">Submit</button>
+	
+	<script type= "text/javascript" >
+	var success = "<?php echo $success; ?>";
+	function message()
+	{	
+		if($success == 1)
+		{
+			alert("Successfully made Account!");
+		}
+		else
+		{
+			alert("Please use another username");
+		}
+	}
+	</script>
+
 	</body>
 	</form>
+-->
