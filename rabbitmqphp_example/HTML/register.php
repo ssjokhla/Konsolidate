@@ -4,8 +4,8 @@
 		$username=$_GET['username'];
 		$password=$_GET['password'];
 		$role=$_GET['role'];
-		$con = mysqli_connect("localhost", "admin", "password", "masterDB");
-		mysqli_select_db($con, "masterDB");
+		$con = mysqli_connect("localhost", "admin", "password", "testDB");
+		mysqli_select_db($con, "testDB");
 		$s = "select * from members where username = '$username'";
 		echo "SQL Statement: $s";
 		$t = mysqli_query($con, $s);
@@ -13,13 +13,13 @@
 		if($rowCount > 0)
 		{
 		  echo "Please Choose another username";
-		  logError("This Username already taken");
-		  return "Error"
+		  logError("Username already in database");
+		  return "Error";
 		}
 		else
 		{
 		$r = "Insert into members (Username, Password, Role)
-		Values('$username','$password','$role')";
+		Values('$username', SHA2('$password',512),'$role')";
 		$tr= mysqli_query($con,$r);
 		return "Complete";
 		}
