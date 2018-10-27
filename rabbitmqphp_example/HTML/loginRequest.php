@@ -49,7 +49,8 @@ switch($payload)
 		break;
 	case '"HCP"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
-		$_SESSION["user"] = "HCP";		
+		$_SESSION["user"] = "HCP";	
+		$_SESSION["Therapist"] = $_GET['username'];			//10/27/2018 Testing for viewReport	
 		echo "Successful HCP Login \n Redirecting now...";
 		pageLoader("HCPHTML.php");
 		break;

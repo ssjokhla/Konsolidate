@@ -8,6 +8,8 @@ session_start();
 
 <?php
 	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
+	//echo $_SESSION["Therapist"];
+	//echo gettype($_SESSION["Therapist"]);
 ?>
 <!DOCTYPE html>
 
