@@ -37,7 +37,7 @@ echo $argv[0]." END".PHP_EOL;
 
 
 $payload = json_encode($response);
-
+echo $payload;
 switch($payload)
 {
 	case '"patient"':
