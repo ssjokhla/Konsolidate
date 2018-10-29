@@ -57,7 +57,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 		Enter Password: <br>
 		
 		Choose Your Role:
-		<select name="roles" id="roles">
+		<select name="role" id="role">
 			<option value="patient">Patient</option>
 			<option value="HCP">HCP</option>
 			<option value="researcher">Researcher</option>
