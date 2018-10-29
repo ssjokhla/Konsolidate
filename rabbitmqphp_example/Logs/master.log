@@ -11,6 +11,7 @@ Message: Authentication Failed when logging in from HTML.
 IP_Address: 192.168.0.104 
 Message: Authentication Failed when logging in from HTML.
 
+<<<<<<< HEAD
 IP_Address: 192.168.0.102 
 Message: Authentication Failed when logging in from HTML.
 
@@ -198,5 +199,9 @@ IP_Address: 192.168.0.103
 Message: Authentication Failed when logging in from HTML.
 
 IP_Address: 192.168.0.103 
+=======
+IP_Address: 192.168.0.108 
+Date: Mon Oct 29 14:25:02 EDT 2018
+>>>>>>> Samish_Branch
 Message: Authentication Failed when logging in from HTML.
 
