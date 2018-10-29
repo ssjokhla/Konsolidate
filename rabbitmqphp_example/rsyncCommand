@@ -1,1 +1,0 @@
-rsync -av --remove-source-files sendFile/ samish@192.168.0.12:~/IT490/Konsolidate/rabbitmqphp_example/HTML/test
