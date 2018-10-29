@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 if(isset($_FILES['file']))
 {
@@ -41,7 +40,6 @@ if(isset($_FILES['file']))
 		echo " You entered wrong file type";
 	}
 }
-=======
 /*
 $info = pathinfo($_FILES['myFile']['name']);
 $ext = $info['extension'];
@@ -56,4 +54,3 @@ echo "File [" . $_FILES['myFile']['name'] . "] has been successfully uploaded!";
 copy($file,'/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/testFileDirectory');
 echo file_get_contents($file);
 ?>
->>>>>>> master

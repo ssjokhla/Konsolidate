@@ -12,3 +12,4 @@ setcookie("givenName", "", time() - 3600, "/");
 
 print "Session has been terminated.";
 pageLoader("login.html");
+?>

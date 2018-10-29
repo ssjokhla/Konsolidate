@@ -54,7 +54,7 @@
 		<select name="role" id="role">
 			<option value="Patient">Patient</option>
 			<option value="HCP">HCP</option>
-			<option value="Researcher">Researcher</option
+			<option value="Researcher">Researcher</option>
 		</select> <br>
 		
 	<input type = submit name = "Register" value = "Button">
