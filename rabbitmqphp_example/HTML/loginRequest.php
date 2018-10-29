@@ -52,7 +52,7 @@ switch($payload)
 		echo "Successful Researcher Login \n Redirecting now...";
 		pageLoader("ResearcherHTML.php");
 		break;
-	case '"HCP"':
+	case '"hcp"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
 		$_SESSION["user"] = "hcp";		
 		echo "Successful HCP Login \n Redirecting now...";

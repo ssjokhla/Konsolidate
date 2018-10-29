@@ -1,5 +1,5 @@
 <?php
-include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
+include('/home/chris/490project/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
 
 gateKeeperLogin("login.html");
