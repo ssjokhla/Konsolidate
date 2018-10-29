@@ -41,7 +41,7 @@ function doLogin($username,$password)
     {
 	  echo "Successful Login";
 	  $row = $t->fetch_assoc();
-	  $currentRole = $row['roles'];
+	  $currentRole = $row['role'];
 	  return $currentRole;
     }
     else
