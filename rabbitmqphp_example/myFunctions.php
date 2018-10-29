@@ -47,8 +47,8 @@ function doLogin($username,$password)
 function doLogin($username,$password)
 {
    global $test;
-   $con = mysqli_connect("localhost", "admin", "password", "testDB");
-   mysqli_select_db($con, "testDB");
+   $con = mysqli_connect("localhost", "admin", "password", "masterDB");
+   mysqli_select_db($con, "masterDB");
     $s = "select * from members where username = '$username' and password = SHA2('$password',512)";
 	echo "SQL Statement: $s";
     //$s = "select * from members where username = 'test' and  password = 'password'";
