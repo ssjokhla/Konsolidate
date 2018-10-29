@@ -24,6 +24,7 @@ function logError($message)
 
 function pageLoader($path)
 {
+	echo $path;
 	header("Refresh: 3; url=$path");
 }
 function doLogin($username,$password)
