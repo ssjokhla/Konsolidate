@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <!-- Access via internet: url = localhost/login.html -->
-
 <style type>
 
 #body
@@ -16,16 +15,35 @@
 }
 
 </style>
+<<<<<<< HEAD
 
 <form action = "loginRequest.php" method = "get">
 <center>
+=======
+>>>>>>> DangoBrancho
 <body id = "body">
-	[KONSOLIDATE]
+<form action = "loginRequest.php" method = "get">
+<center>
+	[KONSOLIDATE] <br> #WrongButKonsistent
 <div id = "D">
+<<<<<<< HEAD
 <input type = text name = "username"  placeholder = "Username" required autocomplete = "off">
+=======
+<input type = text name = "username"  placeholder = "username" required autocomplete = "off"/>
+>>>>>>> DangoBrancho
 	Enter Name: <br>
-<input type = text name = "password" placeholder = "Passcode" required autocomplete = "off">
+<input type = text name = "password" placeholder = "password" required autocomplete = "off"/>
 	Enter Password: <br>
-<input type = submit name = "submit" value = "Button"> 
-</body>
+<!--<select name = "choice">
+
+	<option value = "Patient"> Patient </option>
+	<option value = "HCP"> HCP </option>
+	<option value = "Researcher"> Researcher </option>
+</select> -->
+<input type = submit name = "submit" value = "Login">
 </form>
+
+<form action = "registration.php" method = "get">
+<input type = submit value = "Register"/>
+</form>
+</body>
