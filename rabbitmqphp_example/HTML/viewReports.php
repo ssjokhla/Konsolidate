@@ -24,8 +24,8 @@
 <table border = "1">
 <?php
 	session_start();
-  	$con = mysqli_connect("localhost", "admin", "password", "testDB");
-   	mysqli_select_db($con, "testDB");
+  	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+   	mysqli_select_db($con, "masterDB");
 	//$s = "select * from members";
 	$therapist = $_SESSION["Therapist"];
 	$s = "select * from members where Therapist = '$therapist'";
