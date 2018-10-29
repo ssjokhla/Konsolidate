@@ -5,8 +5,6 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 //include('myFunctions.php');
 
-<<<<<<< HEAD
-=======
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -24,7 +22,6 @@ function requestProcessor($request)
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
 
->>>>>>> DangoBrancho
 $server = new rabbitMQServer("testRabbitMQ.ini","logServer");
 
 echo "logRabbitMQServer BEGIN".PHP_EOL;
