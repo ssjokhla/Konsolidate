@@ -3,11 +3,6 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 //$test = $_SERVER['REMOTE_ADDR'];
-<<<<<<< HEAD
-//Danh was here.
-=======
-//Samish Was Here
->>>>>>> 5b32ee0076388f14fabc6e50af973cad0250aef4
 
 function logError($message)
 {
