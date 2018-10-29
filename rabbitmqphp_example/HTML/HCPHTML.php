@@ -45,6 +45,24 @@ session_start();
 	<form action = "logout.php" method = "get">
 		<input type = submit value = "Back">
 	</form>
+	<?php
+#echo "Is my php even up rn";
+$files = scandir("/var/www/html/uploads/");
+//echo "$files[2]";
+for($i=2; $i < count($files); $i++)
+ {
+?>
+<p>
+        <a href="uploads/
+        <?php
+                echo $files[$i]
+        ?>"><?php echo $files[$i] ?></a>
+</p>
+<?php
+ echo count($files);
+}
+
+?>
 </body>
 
 <?php
