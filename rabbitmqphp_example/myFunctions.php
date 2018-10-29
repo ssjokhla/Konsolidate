@@ -21,16 +21,22 @@ function logError($message)
 	$client->send_request($request);
 }
 
+function pageLoader($path)
+{
+	header("Refresh: 3; url=$path");
+}
 function doLogin($username,$password)
 {
-   $con = mysqli_connect("localhost", "admin", "password", "testDB");
-    mysqli_select_db($con, "testDB");
-    $s = "select * from members where username = '$username' and password = '$password'";
+   $con = mysqli_connect("localhost", "admin", "password", "masterDB");
+    mysqli_select_db($con, "masterDB");
+    $s = "select * from members where username = '$username' and password = SHA2('$password',512)";
     $t = mysqli_query($con, $s);
     $rowCount = mysqli_num_rows($t);
     if($rowCount > 0)
     {
 	    echo "Successful Login.";
+	    $row = $t->fetch_assoc();
+	    $currentRole = $row['role'];
 	    return "Successful Login\n";
     }
     else
@@ -65,8 +71,6 @@ function requestProcessor($request)
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
-
-
 
 
 ?>
