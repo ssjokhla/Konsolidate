@@ -44,8 +44,27 @@ session_start();
 		<input type = submit value = "Back">
 	</form>
 </body>
+<?php
+	#echo "Is my php even up rn";
+	$files = scandir("/var/www/html/uploads/");
+
+	for($i=2; $i < count($files); $i++)
+ 	{?>		
+	
+		<p>
+		<a href="uploads/
+		<?php
+		echo $files[$i]
+		?>"><?php echo $files[$i] ?></a>	
+		</p>
+		<?php
+ 		echo count($files);
+	}
+
+	?>
+
 	
 <?php
 		#encapsulating HTML so that gateKeeper works
-	}
+}
 ?>
