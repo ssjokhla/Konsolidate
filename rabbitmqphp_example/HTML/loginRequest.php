@@ -1,9 +1,4 @@
 <?php
-<<<<<<< HEAD
-require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/path.inc');
-require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/get_host_info.inc');
-require_once('/home/samish/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
-=======
 // Starting session here:
 //session_set_cookie_params(0, "/var/www/html/");
 session_start();
@@ -14,7 +9,6 @@ require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/get_host_inf
 require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 
->>>>>>> DangoBrancho
 $client = new rabbitMQClient("testRabbitMQ.ini","testServer");
 if (isset($argv[1]))
 {
@@ -33,7 +27,6 @@ $request['password'] = $_GET['password'];
 $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);
-<<<<<<< HEAD
 
 echo "client received response: ".PHP_EOL;
 print_r($response);
@@ -43,9 +36,7 @@ echo "\n\n";
 echo $argv[0]." END".PHP_EOL;
 
 
-=======
 $payload = json_encode($response);
->>>>>>> DangoBrancho
 
 switch($payload)
 {

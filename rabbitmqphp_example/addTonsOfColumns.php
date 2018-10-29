@@ -1,4 +1,7 @@
 #!/usr/bin/php
+
+//Script to add multiple columns in MySQL Database
+
 <?php
 $con = mysqli_connect("localhost", "admin", "password", "masterDB");
 mysqli_select_db($con, "masterDB");

@@ -44,7 +44,8 @@ session_start();
 		<input type = submit value = "Back">
 	</form>
 </body>
-
+	
 <?php
+		#encapsulating HTML so that gateKeeper works
 	}
 ?>
