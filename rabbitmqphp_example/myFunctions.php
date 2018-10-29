@@ -3,11 +3,7 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 //$test = $_SERVER['REMOTE_ADDR'];
-<<<<<<< HEAD
 //Danh was here.
-=======
-//Samish Was Here
->>>>>>> 5b32ee0076388f14fabc6e50af973cad0250aef4
 
 function logError($message)
 {
@@ -30,20 +26,6 @@ function pageLoader($path)
 {
 	header("Refresh: 3; url=$path");
 }
-function doLogin($username,$password)
-{
-   $con = mysqli_connect("localhost", "admin", "password", "masterDB");
-    mysqli_select_db($con, "masterDB");
-    $s = "select * from members where username = '$username' and password = SHA2('$password',512)";
-    $t = mysqli_query($con, $s);
-    $rowCount = mysqli_num_rows($t);
-    if($rowCount > 0)
-    {
-	    echo "Successful Login.";
-	    $row = $t->fetch_assoc();
-	    $currentRole = $row['role'];
-	    return "Successful Login\n";
-
 function doLogin($username,$password)
 {
    global $test;
@@ -73,12 +55,11 @@ function doLogin($username,$password)
 	    logError("Authentication Failed when logging in from HTML.");
 	    //error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
 	    return "Error";
-    }
+}
     // lookup username in databas
     // check password
     //return true;
     //return false if not valid
-}
 
 function requestProcessor($request)
 {
