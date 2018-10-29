@@ -39,10 +39,6 @@ function doLogin($username,$password)
 	    $row = $t->fetch_assoc();
 	    $currentRole = $row['role'];
 	    return "Successful Login\n";
-function pageLoader($path)
-{
-	header("Refresh: 3; url=$path");
-}
 
 function doLogin($username,$password)
 {
@@ -117,7 +113,6 @@ function gateKeeperLogin($path)
 	}
 }
 
-<<<<<<< HEAD
 function gateKeeperRole($path, $currRole)
 {
 	if($_SESSION["user"] != $currRole)
@@ -132,6 +127,4 @@ function gateKeeperRole($path, $currRole)
 	}
 }
 
-=======
->>>>>>> Samish_Branch
 ?>
