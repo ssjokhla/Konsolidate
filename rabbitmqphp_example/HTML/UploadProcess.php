@@ -1,8 +1,9 @@
 <?php
 
-if(isset($_FILES['file']))
+if(isset($_FILES['myFile']))
 {
-	$file = $_FILES['file'];
+	echo "If statement hit.";
+	$file = $_FILES['myFile'];
 
 	$file_name= $file['name'];
 	$file_tmp = $file['tmp_name'];
@@ -51,6 +52,6 @@ move_uploaded_file($_FILES['myFile']['tmp_name'], $target);
  */
 $filename = $_FILES['myFile']['name'];
 echo "File [" . $_FILES['myFile']['name'] . "] has been successfully uploaded!";
-copy($file,'/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/testFileDirectory');
+copy($file,'/var/www/html/uploads/');
 echo file_get_contents($file);
 ?>
