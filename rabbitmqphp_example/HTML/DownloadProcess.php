@@ -2,7 +2,7 @@
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
 
-$client = new rabbitMQClient("testRabbitMQ.ini","registerServer");
+$client = new rabbitMQClient("testRabbitMQ.ini","downServer");
 if(isset($_GET['download']))
 {
 	$request = array();
