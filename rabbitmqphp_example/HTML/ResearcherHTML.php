@@ -36,7 +36,7 @@ session_start();
 
 	
 	<form action = "" method = "get">
-		<input type = submit value = "Download Report">
+		<input type = submit value = "down">
 	</form>
 </body>
 
