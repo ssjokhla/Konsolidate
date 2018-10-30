@@ -19,7 +19,7 @@ else
 {
 	echo "IF STATEMENT FAILED";
 }
-/*
+
 	for($i=2; $i < count($files); $i++)
 	{
 ?>

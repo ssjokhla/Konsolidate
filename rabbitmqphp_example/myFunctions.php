@@ -125,7 +125,7 @@ function doDownload()
 {
         $con = mysqli_connect("localhost", "admin", "password", "masterDB");
         mysqli_select_db($con, "masterDB");
-        $s = "select * from members INTO OUTFILE '/var/lib/mysql-files/members.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
+        $s = "select * from dataTable INTO OUTFILE '/var/lib/mysql-files/dataTable.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
         $t = mysqli_query($con, $s);
 }
 
