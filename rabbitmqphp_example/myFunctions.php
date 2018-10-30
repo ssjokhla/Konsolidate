@@ -97,6 +97,7 @@ function viewReports($therapist)
 	$t = mysqli_query($con, $s);
 	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
+	return $t;
 
 /*
 	$allFields = array();
@@ -114,7 +115,7 @@ function viewReports($therapist)
 	}
 	echo "Array returned\n";
 	return $allFields;
-*/
+
 /////////////// 
 	for($i = 0; $i < 3; $i++)
 	{
@@ -132,17 +133,9 @@ function viewReports($therapist)
 			echo $rowsPer[$i];
 		}
 	}
- 
+ */ 
 }
 
-function pullTable()
-{
- $con = mysqli_connect("localhost", "admin", "password", "masterDB");
-        mysqli_select_db($con, "masterDB");
-	 $s = "select * from members";
-	 $t = mysqli_query($con, $s);
-	 return $t;
-}
 
 function doDownload()
 {
@@ -174,7 +167,8 @@ function requestProcessor($request)
 	case "reg":
 		return doRegister($request['username'],$request['password'],$request['role']);
 	case "view":
-		return viewReports($request['role']);
+		//return viewReports($request['role']);
+		return pullTable();
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
