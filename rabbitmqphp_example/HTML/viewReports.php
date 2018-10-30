@@ -29,7 +29,7 @@
 	$client = new rabbitMQClient("testRabbitMQ.ini","viewServer");
 	echo "Client works";
 	$therapist = $_SESSION["Therapist"];
-	//echo "Therapist works";
+/*
 	if(isset($_GET['reports']))
 	{
 		$request = array();
@@ -40,6 +40,8 @@
 		//echo "IT REALLY WORKED:";
 		echo $payload;
 	}
+*/
+	echo pullTable();
 	//echo "WORK";
 		
 /*

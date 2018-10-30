@@ -135,6 +135,15 @@ function viewReports($therapist)
  
 }
 
+function pullTable()
+{
+ $con = mysqli_connect("localhost", "admin", "password", "masterDB");
+        mysqli_select_db($con, "masterDB");
+	 $s = "select * from members";
+	 $t = mysqli_query($con, $s);
+	 return $t;
+}
+
 function doDownload()
 {
         $con = mysqli_connect("localhost", "admin", "password", "masterDB");
