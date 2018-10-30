@@ -96,6 +96,7 @@ function viewReports($therapist)
 	$t = mysqli_query($con, $s);
 	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
+/*
 	$allFields = array();
 	while($fetch = mysqli_fetch_field($t))
 	{
@@ -111,6 +112,23 @@ function viewReports($therapist)
 	}
 	echo "Array returned\n";
 	return $allFields;
+ */
+	for($i = 0; $i < 3; $i++)
+	{
+		$fetch = mysqli_fetch_field($t);
+		if($fetch->name != "password")
+		{
+			echo $fetch->name;
+		}
+	}
+	while($rowsPer = mysqli_fetch_array($t))
+	{
+		echo $rowsPer[0];
+		for($i = 2; $i < 3; $i++)
+		{
+			echo $rowsPer[$i];
+		}
+	}
 }
 
 function doDownload()

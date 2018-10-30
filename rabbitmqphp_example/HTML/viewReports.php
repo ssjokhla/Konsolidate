@@ -23,10 +23,25 @@
 
 <table border = "1">
 <?php
+	include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 	session_start();
+	echo "Session started";
 	$client = new rabbitMQClient("testRabbitMQ.ini","viewServer");
+	echo "Client works";
 	$therapist = $_SESSION["Therapist"];
-	viewReports($therapist);	
+	//echo "Therapist works";
+	if(isset($_GET['reports']))
+	{
+		$request = array();
+		$request['type'] = "view";
+		$request['role'] = $therapist;
+		$response = $client->send_request($request);
+		$payload = json_encode($response);
+		//echo "IT REALLY WORKED:";
+		echo $payload;
+	}
+	//echo "WORK";
+		
 /*
 	for($i = 0; $i < 3; $i++)
 	{

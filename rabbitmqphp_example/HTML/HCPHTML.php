@@ -36,7 +36,7 @@ session_start();
 
 
 	<form action = "viewReports.php" method = "get">
-		<input type = submit value = "View Your Reports">
+		<input type = submit value = "reports" name = "reports">
 	</form>
 
 
