@@ -5,7 +5,7 @@ $client = new rabbitMQClient("testRabbitMQ.ini","registerServer");
 if(isset($_GET['Register']))
 {
 	$request = array();
-	$request['type'] = "register";
+	$request['type'] = "reg";
 	$request['username'] = $_GET['username'];
 	$request['password'] = $_GET['password'];
 	$request['role'] = $_GET['role'];
