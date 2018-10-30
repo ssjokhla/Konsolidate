@@ -152,7 +152,7 @@ function requestProcessor($request)
 		return doRegister($request['username'],$request['password'],$request['role']);
 	case "view":
 		return viewReports($request['role']);
-	case "do":
+	case "down":
 		return doDownload();
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
