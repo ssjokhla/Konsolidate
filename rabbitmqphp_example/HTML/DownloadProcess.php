@@ -12,6 +12,7 @@ if(isset($_GET['download']))
 	$response = $client -> send_request($request);
 	$files = scandir("/var/www/html/downloads/");
 	echo "$files[2]";
+}
 /*
 	for($i=2; $i < count($files); $i++)
 	{
@@ -30,6 +31,7 @@ if(isset($_GET['download']))
 			echo count($files);
 		echo "<br> count of uploads folder is:".count($files1);
 	}
- */
+ 
 ?>
 </html>
+ 
