@@ -57,19 +57,8 @@ function doLogin($username,$password)
 	logError("Authentication Failed when logging in from HTML.");
 	//error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
 	return "Error";
-<<<<<<< HEAD
 }
-// lookup username in databas
-// check password
-//return true;
-//return false if not valid
 
-=======
-}
-// lookup username in databas
-// check password
-//return true;
-//return false if not valid
 function doRegister($username,$password,$role)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
@@ -92,10 +81,7 @@ function doRegister($username,$password,$role)
 		echo "Successfully created Account!";
 		return true;	
 	}
-}
->>>>>>> 5e501204854b3ad1655313c235138287c6934477
-function requestProcessor($request)
-{
+
 	echo "received request".PHP_EOL;
 	var_dump($request);
 	if(!isset($request['type']))
@@ -112,12 +98,9 @@ function requestProcessor($request)
 	case "log":
 		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
 		error_log($message,3,"Logs/master.log");
-<<<<<<< HEAD
 
-=======
 	case "reg":
 		return doRegister($request['username'],$request['password'],$request['role']);
->>>>>>> 5e501204854b3ad1655313c235138287c6934477
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
