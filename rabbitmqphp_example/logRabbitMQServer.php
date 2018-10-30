@@ -21,7 +21,6 @@ function requestProcessor($request)
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
-
 $server = new rabbitMQServer("testRabbitMQ.ini","logServer");
 
 echo "logRabbitMQServer BEGIN".PHP_EOL;
