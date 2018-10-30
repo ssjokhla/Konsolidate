@@ -80,57 +80,58 @@ function doRegister($username,$password,$role)
 		$tr= mysqli_query($con,$r);
 		echo "Successfully created Account!";
 		return true;	
+	}}
+		function requestProcessor($request)
+		{
+			echo "received request".PHP_EOL;
+			var_dump($request);
+			if(!isset($request['type']))
+			{
+				return "ERROR: unsupported message type";
+			}
+			switch ($request['type'])
+			{
+			case "login":
+				return doLogin($request['username'],$request['password']);
+			case "validate_session":
+				return doValidate($request['sessionId']);
+				//Setting up another case to run when we run logError
+			case "log":
+				$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
+				error_log($message,3,"Logs/master.log");
+
+			case "reg":
+				return doRegister($request['username'],$request['password'],$request['role']);
+			}
+			return array("returnCode" => '0', 'message'=>"Server received request and processed");
+		}
+
+	function gateKeeperLogin($path)
+	{
+		if(!isset($_SESSION["logged"]))
+		{
+			echo "Failed Gatekeeper Test: | Not logged in | Redirecting to homepage.";
+			pageLoader($path);
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
-	echo "received request".PHP_EOL;
-	var_dump($request);
-	if(!isset($request['type']))
+	function gateKeeperRole($path, $currRole)
 	{
-		return "ERROR: unsupported message type";
+		if($_SESSION["user"] != $currRole)
+		{
+			echo "Failed Gatekeeper Test: | Not correct user | Redirecting to homepage.";
+			pageLoader($path);
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
-	switch ($request['type'])
-	{
-	case "login":
-		return doLogin($request['username'],$request['password']);
-	case "validate_session":
-		return doValidate($request['sessionId']);
-		//Setting up another case to run when we run logError
-	case "log":
-		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
-		error_log($message,3,"Logs/master.log");
-
-	case "reg":
-		return doRegister($request['username'],$request['password'],$request['role']);
-	}
-	return array("returnCode" => '0', 'message'=>"Server received request and processed");
-}
-
-function gateKeeperLogin($path)
-{
-	if(!isset($_SESSION["logged"]))
-	{
-		echo "Failed Gatekeeper Test: | Not logged in | Redirecting to homepage.";
-		pageLoader($path);
-		return false;
-	}
-	else
-	{
-		return true;
-	}
-}
-
-function gateKeeperRole($path, $currRole)
-{
-	if($_SESSION["user"] != $currRole)
-	{
-		echo "Failed Gatekeeper Test: | Not correct user | Redirecting to homepage.";
-		pageLoader($path);
-		return false;
-	}
-	else
-	{
-		return true;
-	}
-}
 
 ?>
