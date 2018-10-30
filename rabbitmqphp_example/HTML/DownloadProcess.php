@@ -1,15 +1,17 @@
 <?php
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
-
+echo "Session started";
 $client = new rabbitMQClient("testRabbitMQ.ini","downServer");
-if(isset($_GET['download']))
+echo "Client created";
+if(isset($_GET['down']))
 {
+	echo "If statement hit";
 	$request = array();
 	$request['type'] = "down";
 	$request['message'] = $msg;
 	$response = $client->send_request($request);
-	$response = $client -> send_request($request);
+	//$response = $client -> send_request($request);
 	$files = scandir("/var/www/html/downloads/");
 	echo "$files[2]";
 }
