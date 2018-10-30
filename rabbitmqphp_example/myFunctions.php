@@ -167,8 +167,7 @@ function requestProcessor($request)
 	case "reg":
 		return doRegister($request['username'],$request['password'],$request['role']);
 	case "view":
-		//return viewReports($request['role']);
-		return pullTable();
+		return viewReports($request['role']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
