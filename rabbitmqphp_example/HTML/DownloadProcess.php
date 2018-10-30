@@ -35,8 +35,6 @@ else
 "><?php echo $files[$i]; ?></a>
 			</p>
 <?php
-			echo count($files);
-		echo "<br> count of uploads folder is:".count($files1);
 	}
  
 ?>
