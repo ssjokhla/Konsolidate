@@ -5,11 +5,11 @@ require_once('../get_host_info.inc');
 require_once('../rabbitMQLib.inc');
 include('../myFunctions.php');
 
-$server = new rabbitMQServer("testRabbitMQ.ini","registerServer");
+$server = new rabbitMQServer("testRabbitMQ.ini","downServer");
 
-echo "regRabbitMQServer BEGIN".PHP_EOL;
+echo "downRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
-echo "regRabbitMQServer END".PHP_EOL;
+echo "downRabbitMQServer END".PHP_EOL;
 exit();
 ?>
 
