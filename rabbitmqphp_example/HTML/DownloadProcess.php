@@ -15,6 +15,10 @@ if(isset($_GET['down']))
 	$files = scandir("/var/www/html/downloads/");
 	echo "$files[2]";
 }
+else
+{
+	echo "IF STATEMENT FAILED";
+}
 /*
 	for($i=2; $i < count($files); $i++)
 	{

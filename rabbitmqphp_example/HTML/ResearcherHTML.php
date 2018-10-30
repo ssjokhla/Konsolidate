@@ -36,7 +36,7 @@ session_start();
 
 	
 	<form action = "DownloadProcess.php" method = "get">
-		<input type = submit value = "down">
+		<input type = submit value = "down" name = "down">
 	</form>
 </body>
 
