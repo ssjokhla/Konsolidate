@@ -90,6 +90,7 @@ function viewReports($therapist)
 	$s = "select * from members where Therapist = '$therapist'";
 	$t = mysqli_query($con, $s);
 	$rowCount = mysqli_num_rows($t);
+/*
 	$allFields = array();
 	while($fetch = mysqli_fetch_field($t))
 	{
@@ -103,6 +104,23 @@ function viewReports($therapist)
 		}
 	}
 	return $allFields;
+ */
+	for($i = 0; $i < 3; $i++)
+	{
+		$fetch = mysqli_fetch_field($t);
+		if($fetch->name != "password")
+		{
+			echo $fetch->name;
+		}
+	}
+	while($rowsPer = mysqli_fetch_array($t))
+	{
+		echo $rowsPer[0];
+		for($i = 2; $i < 3; $i++)
+		{
+			echo $rowsPer[$i];
+		}
+	}
 }
 
 function requestProcessor($request)
