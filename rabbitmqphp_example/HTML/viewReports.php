@@ -37,9 +37,22 @@
 		$request['role'] = $therapist;
 		$response = $client->send_request($request);
 		$payload = json_encode($response);
+		$array = json_decode($payload, true);
 		//echo "IT REALLY WORKED:";
-		echo $payload;
+		//echo $payload;
+		
+		foreach($array as $key => $value)
+		{
+			echo "<th>" . $key . "</th>";
+			/*
+			foreach($value $key2 => $value2)
+			{
+				echo "<tr><td>" . $value2 . "<td>";
+			}
+			 */
+		}
 	}
+
 
 	//echo "WORK";
 		
