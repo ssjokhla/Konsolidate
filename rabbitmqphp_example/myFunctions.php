@@ -96,7 +96,7 @@ function viewReports($therapist)
 	$t = mysqli_query($con, $s);
 	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
-/*
+
 	$allFields = array();
 	while($fetch = mysqli_fetch_field($t))
 	{
@@ -112,7 +112,7 @@ function viewReports($therapist)
 	}
 	echo "Array returned\n";
 	return $allFields;
- */
+/* 
 	for($i = 0; $i < 3; $i++)
 	{
 		$fetch = mysqli_fetch_field($t);
@@ -129,6 +129,7 @@ function viewReports($therapist)
 			echo $rowsPer[$i];
 		}
 	}
+ */
 }
 
 function doDownload()
