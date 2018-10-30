@@ -16,7 +16,7 @@ function requestProcessor($request)
   else if($request['type'] == "log")
   {
 	$message = "IP_Address: " . $request['IP_ADDR'] . "Message: " . $request['message'] . "\n\n";
-  	error_log($message,3,"Logs/master.log");
+  	error_log($message,3,"../Logs/master.log");
 	//return logError($request['IP_ADDR'],$request['message']);
   }
   return array("returnCode" => '0', 'message'=>"Server received request and processed");
