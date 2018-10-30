@@ -40,47 +40,36 @@
 		$array = json_decode($payload, true);
 		//echo "IT REALLY WORKED:";
 		//echo $payload;
-		
+
 		foreach($array as $key => $value)
-		{
-			echo "<th>" . $key . "</th>";
-			/*
-			foreach($value $key2 => $value2)
-			{
-				echo "<tr><td>" . $value2 . "<td>";
+		{	
+			if($key != "password")
+			{	
+				echo "<th>" . $key . "</th>";
+
+				foreach($value as $key2 => $value2)
+				{	
+					echo "<td>" . $value2 . "</td>";
+				}
 			}
-			 */
 		}
-	}
-
-
-	//echo "WORK";
-		
 /*
-	for($i = 0; $i < 3; $i++)
-	{
-		$fetch = mysqli_fetch_field($t);
-		if($fetch->name != "password")						//Subjected to change depending on Role
-		{
-			echo "<th>" . $fetch->name . "</th>";
-			echo "          ";
+		echo "<tr>";
+		foreach($array as $key => $value)
+		{		
+			echo "<th>" . $key . "</th>";
 		}
-	}
-	
+		echo "</tr>";
 
-
-	while($rowsPer = mysqli_fetch_array($t))
-	{
-		echo "<tr><td>" . $rowsPer[0] . "</td>";
-
-		for($i = 2; $i < 3; $i++)		// set limit to how many columns there are.  Setup to skip Password column with initial "i" value.
-		{
-			echo "<td>" . $rowsPer[$i] . "</td>";
-			//echo "<br />\n";
+		foreach($array as $key => $value)
+		{	
+			foreach($value as $key2 => $value2)
+			{	
+				echo "<tr><td>" . $value2 . "</tr></td>";
+			}
 		}
-
-	}
 */
+	}
 ?>
 </table>
 </html>
