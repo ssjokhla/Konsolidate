@@ -88,7 +88,8 @@ function doRegister($username,$password,$role)
 function viewReports($therapist)
 {
 	echo "View reports called \n";
-	//return true;
+	return true;
+/*
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 	echo "Connected to database\n";
@@ -112,7 +113,7 @@ function viewReports($therapist)
 	}
 	echo "Array returned\n";
 	return $allFields;
-/* 
+/////////////// 
 	for($i = 0; $i < 3; $i++)
 	{
 		$fetch = mysqli_fetch_field($t);
