@@ -63,8 +63,10 @@ function doRegister($username,$password,$role)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+	echo "Connecting to database\n";
 	$s = "select * from members where username = '$username'";
 	$t = mysqli_query($con, $s);
+	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
 	#Checks if username is already part of database
 	if($rowCount > 0)
@@ -85,25 +87,40 @@ function doRegister($username,$password,$role)
 
 function viewReports($therapist)
 {
+	echo "View reports called \n";
+	//return true;
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+	echo "Connected to database\n";
 	$s = "select * from members where Therapist = '$therapist'";
 	$t = mysqli_query($con, $s);
+	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
 	$allFields = array();
 	while($fetch = mysqli_fetch_field($t))
 	{
 		if($fetch->name == "password")
 		{
+			echo "Password Column Found\n";
 			continue;
 		}
-		for($currRow = 0; currRow < $rowCount; $currRow++)
+		for($currRow = 0; $currRow < $rowCount; $currRow++)
 		{
-			array([$fetch->name][$fetch[$currRow]]);
+			$allFields[$fetch->name][$fetch[$currRow]];
 		}
 	}
+	echo "Array returned\n";
 	return $allFields;
 }
+
+function doDownload()
+{
+        $con = mysqli_connect("localhost", "admin", "password", "masterDB");
+        mysqli_select_db($con, "masterDB");
+        $s = "select * from members INTO OUTFILE '/var/lib/mysql-files/members.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
+        $t = mysqli_query($con, $s);
+}
+
 
 function requestProcessor($request)
 {
@@ -124,7 +141,9 @@ function requestProcessor($request)
 		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
 		error_log($message,3,"Logs/master.log");
 	case "reg":
-	return doRegister($request['username'],$request['password'],$request['role']);
+		return doRegister($request['username'],$request['password'],$request['role']);
+	case "view":
+		return viewReports($request['role']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
