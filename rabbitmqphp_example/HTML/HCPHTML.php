@@ -7,7 +7,7 @@ session_start();
 
 
 <?php
-	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
+if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 ?>
 <!DOCTYPE html>
 
@@ -43,9 +43,32 @@ session_start();
 	<form action = "logout.php" method = "get">
 		<input type = submit value = "Back">
 	</form>
-</body>
-	
 <?php
-		#encapsulating HTML so that gateKeeper works
+	$client = new rabbitMQClient("testRabbitMQ.ini","downServer");
+	$request = array();
+	$request['type'] = "down";
+	$response = $client -> send_request($request);
+	$files = scandir("/var/www/html/downloads/");
+	$files1 = scandir("/var/www/html/uploads/");
+	//echo "$files[2]";
+	for($i=2; $i < count($files); $i++)
+	{	
+?>
+<p>
+	<a href="downloads/
+<?php
+		echo $files[$i]
+			?>"><?php echo $files[$i] ?></a>	
+			</p>
+<?php
+			echo count($files);
+		echo "<br> count of uploads folder is:".count($files1);
 	}
+
+?>
+</body>
+
+<?php
+	#encapsulating HTML so that gateKeeper works
+}
 ?>
