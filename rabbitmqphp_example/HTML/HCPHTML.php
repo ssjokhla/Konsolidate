@@ -43,11 +43,13 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 	<form action = "logout.php" method = "get">
 		<input type = submit value = "Back">
 	</form>
+
 <?php
+	
 	$client = new rabbitMQClient("testRabbitMQ.ini","downServer");
 	$request = array();
 	$request['type'] = "down";
-	$response = $client -> send_request($request);
+//	$response = $client -> send_request($request);
 	$files = scandir("/var/www/html/downloads/");
 	$files1 = scandir("/var/www/html/uploads/");
 	//echo "$files[2]";
@@ -65,7 +67,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 		echo "<br> count of uploads folder is:".count($files1);
 	}
 
-?>
+?>*/
 </body>
 
 <?php
