@@ -5,6 +5,23 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 include('myFunctions.php');
 
+/*
+function requestProcessor($request)
+{
+	echo "received request".PHP_EOL;
+	var_dump($request);
+	if(!isset($request['type']))
+	{
+		return "ERROR: unsupported message type";
+	}
+	if($request['type'] == 'reg')
+	{
+		doRegister($request['username'],$request['password'],$request['role']);
+	}
+	return array("returnCode" => '0', 'message'=>"Server received request and processed");
+}
+ */
+
 $server = new rabbitMQServer("testRabbitMQ.ini","registerServer");
 
 echo "regRabbitMQServer BEGIN".PHP_EOL;
