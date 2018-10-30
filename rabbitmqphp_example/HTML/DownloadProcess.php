@@ -12,6 +12,7 @@ if(isset($_GET['down']))
 	$request['message'] = $msg;
 	$response = $client->send_request($request);
 	//$response = $client -> send_request($request);
+	sleep(3);
 	$files = scandir("/var/www/html/downloads/");
 	echo "$files[2]";
 }
