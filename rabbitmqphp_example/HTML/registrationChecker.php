@@ -30,6 +30,7 @@ if(isset($_GET['Register']))
 	else
 	{
 		pageLoader("registration.html");
+		logError("Failed registration because username already exists");
 	}
 
 
