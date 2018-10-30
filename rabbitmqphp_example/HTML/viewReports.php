@@ -24,16 +24,10 @@
 <table border = "1">
 <?php
 	session_start();
-  	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
-   	mysqli_select_db($con, "masterDB");
-	//$s = "select * from members";
-	echo "Session is:".$_SESSION["Therapist"];
+	$client = new rabbitMQClient("testRabbitMQ.ini","viewServer");
 	$therapist = $_SESSION["Therapist"];
-	echo "therapist variable is:".$therapist;
-	$s = "select * from members where Therapist = '$therapist'";
-    	$t = mysqli_query($con, $s);
-    	$rowCount = mysqli_num_rows($t);
-
+	viewReports($therapist);	
+/*
 	for($i = 0; $i < 3; $i++)
 	{
 		$fetch = mysqli_fetch_field($t);
@@ -57,6 +51,7 @@
 		}
 
 	}
+*/
 ?>
 </table>
 </html>
