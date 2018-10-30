@@ -82,6 +82,29 @@ function doRegister($username,$password,$role)
 		return true;	
 	}
 }
+
+function viewReports($therapist)
+{
+	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+	mysqli_select_db($con, "masterDB");
+	$s = "select * from members where Therapist = '$therapist'";
+	$t = mysqli_query($con, $s);
+	$rowCount = mysqli_num_rows($t);
+	$allFields = array();
+	while($fetch = mysqli_fetch_field($t))
+	{
+		if($fetch->name == "password")
+		{
+			continue;
+		}
+		for($currRow = 0; currRow < $rowCount; $currRow++)
+		{
+			array[$fetch->name][$fetch[$currRow]];
+		}
+	}
+	return $allFields;
+}
+
 function requestProcessor($request)
 {
 	echo "received request".PHP_EOL;
