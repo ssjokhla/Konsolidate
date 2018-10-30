@@ -94,46 +94,30 @@ function viewReports($therapist)
 	mysqli_select_db($con, "masterDB");
 	echo "Connected to database\n";
 	$s = "select * from members where Therapist = '$therapist'";
-	$t = mysqli_query($con, $s);
+	$t = mysqli_query($con,$s);
 	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
-	return $t;
 
-/*
-	$allFields = array();
+
+	$avoidCounter = 0;
+	
+	
+	$array = array();
+	$colCounter = 0;
 	while($fetch = mysqli_fetch_field($t))
 	{
-		if($fetch->name == "password")
-		{
-			echo "Password Column Found\n";
-			continue;
+		$tmpCount = 0;
+		while($row = mysqli_fetch_array($t))
+		{	
+			$array[$fetch->name][$tmpCount] = $row[$colCounter];
+			$tmpCount++;
 		}
-		for($currRow = 0; $currRow < $rowCount; $currRow++)
-		{
-			$allFields[$fetch->name][$fetch[$currRow]];
-		}
+		mysqli_data_seek($t, 0);	 
+		$colCounter++;
+		//$array[$fetch->name] = "BOB";
+		
 	}
-	echo "Array returned\n";
-	return $allFields;
-
-/////////////// 
-	for($i = 0; $i < 3; $i++)
-	{
-		$fetch = mysqli_fetch_field($t);
-		if($fetch->name != "password")
-		{
-			echo $fetch->name;
-		}
-	}
-	while($rowsPer = mysqli_fetch_array($t))
-	{
-		echo $rowsPer[0];
-		for($i = 2; $i < 3; $i++)
-		{
-			echo $rowsPer[$i];
-		}
-	}
- */ 
+	return $array;
 }
 
 
