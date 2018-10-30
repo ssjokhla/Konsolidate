@@ -99,7 +99,7 @@ function viewReports($therapist)
 		}
 		for($currRow = 0; currRow < $rowCount; $currRow++)
 		{
-			array[$fetch->name][$fetch[$currRow]];
+			array([$fetch->name][$fetch[$currRow]]);
 		}
 	}
 	return $allFields;
