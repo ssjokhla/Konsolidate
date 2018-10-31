@@ -5,13 +5,16 @@ require_once('rabbitMQLib.inc');
 //$test = $_SERVER['REMOTE_ADDR'];
 //Danh was here.
 
+//Creates a log with a specific message for error
 function logError($message)
 {
 	//Saving our IP Address to a variable
 	$IP = shell_exec('hostname -I');
+	//Saving the Date to a variable
 	$Date = shell_exec('date');
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "logServer");
+	//New array to eventually send
 	$request = array();
 	$request['type'] = "log";
 	//Replace $IP with IP from ifconfig
@@ -22,24 +25,32 @@ function logError($message)
 	$client->send_request($request);
 }
 
+//Redirects to another page to load
 function pageLoader($path)
 {
+	//Printing out path we are redirecting to
 	echo $path;
+	//Redirecting
 	header("Refresh: 3; url=$path");
 }
+
+//Takes user input and checks database to confirm login
 function doLogin($username,$password)
 {
 	global $test;
+	//Connects to database
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+	//Checks username and hashes the password to chek database
 	$s = "select * from members where username = '$username' and password = SHA2('$password',512)";
 	echo "SQL Statement: $s";
-	//$s = "select * from members where username = 'test' and  password = 'password'";
 	$t = mysqli_query($con, $s);
+	//Checks how many of that username is in the database
 	$rowCount = mysqli_num_rows($t);
 
 	if($rowCount > 0)
 	{
+		//If there are users log in works
 		echo "Successful Login";
 		$row = $t->fetch_assoc();
 		$currentRole = $row['role'];
@@ -48,22 +59,24 @@ function doLogin($username,$password)
 	}
 	else
 	{
+		//If there are 0 entries then log in fails
 		echo "Error in logging in";
 		logError("Authentication Failed when logging in from HTML.");
 		return "Bad Login\n";
 	}
 	return true;
-	//Send error to listener
+	//Send error to log listener
 	logError("Authentication Failed when logging in from HTML.");
-	//error_log("Authentication Failed when logging in from HTML.\n", 3, "/var/log/IT490Logs/master.log");
 	return "Error";
 }
 
+//Allows a user to register
 function doRegister($username,$password,$role)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 	echo "Connecting to database\n";
+	//Checks if username already exists
 	$s = "select * from members where username = '$username'";
 	$t = mysqli_query($con, $s);
 	echo "MySQL Query sent\n";
@@ -71,13 +84,14 @@ function doRegister($username,$password,$role)
 	#Checks if username is already part of database
 	if($rowCount > 0)
 	{
+		//If username exists redirects to main page
 		echo "Please choose another username";
 		logError("Username already in database");
 		return false;
 	}
 	else
 	{
-		#If username isn't in database registers user with the appropriate hash and role value
+		//If username isn't in database registers user with the appropriate hash and role value
 		$r = "Insert into members (username, password, role) VALUE ('$username', SHA2('$password',512), '$role')";
 		$tr= mysqli_query($con,$r);
 		echo "Successfully created Account!";
@@ -85,6 +99,7 @@ function doRegister($username,$password,$role)
 	}
 }
 
+//Function to allow HCP to view their patients
 function viewReports($therapist)
 {
 	echo "View reports called \n";
@@ -93,43 +108,48 @@ function viewReports($therapist)
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 	echo "Connected to database\n";
+	//Finds users with their therapist
 	$s = "select * from members where Therapist = '$therapist'";
 	$t = mysqli_query($con,$s);
 	echo "MySQL Query sent\n";
 	$rowCount = mysqli_num_rows($t);
 
-
-	$avoidCounter = 0;
-	
-	
+	//Created an array for the values we're pulling
 	$array = array();
+	//Used to keep track of column values (horizontal)
 	$colCounter = 0;
 	while($fetch = mysqli_fetch_field($t))
 	{
+		//Counter used to index values set to key in 2 dimensional array.
 		$tmpCount = 0;
+		//Takes each row one at a time.
 		while($row = mysqli_fetch_array($t))
 		{	
+			//Inputs new entry in array with key and array pair.
 			$array[$fetch->name][$tmpCount] = $row[$colCounter];
+			//Increment to get to next index.
 			$tmpCount++;
 		}
+		//Reset the fetch to preventt hitting NULL.
 		mysqli_data_seek($t, 0);	 
+		//Increment to net column for next loop.
 		$colCounter++;
-		//$array[$fetch->name] = "BOB";
-		
 	}
+	//Return array to php so it can be viewed in the browser
 	return $array;
 }
 
-
+//Function called when user wants to download a file
 function doDownload()
 {
         $con = mysqli_connect("localhost", "admin", "password", "masterDB");
         mysqli_select_db($con, "masterDB");
+	//SQL query sent to database to send contents of dataTable to another directory, that directory will forward it to apache server for download
         $s = "select * from dataTable INTO OUTFILE '/var/lib/mysql-files/dataTable.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
         $t = mysqli_query($con, $s);
 }
 
-
+//Is called when listener pulls from RabbitMQ
 function requestProcessor($request)
 {
 	echo "received request".PHP_EOL;
@@ -158,10 +178,13 @@ function requestProcessor($request)
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
 
+//Checks for log in validation
 function gateKeeperLogin($path)
 {
+	//Checks if logged flag does not exist
 	if(!isset($_SESSION["logged"]))
 	{
+		//Reirects to home page
 		echo "Failed Gatekeeper Test: | Not logged in | Redirecting to homepage.";
 		pageLoader($path);
 		return false;
@@ -172,10 +195,13 @@ function gateKeeperLogin($path)
 	}
 }
 
+//Stops user from switching roles to circumvent security
 function gateKeeperRole($path, $currRole)
 {
+	//Checks if the User's role is set to another role
 	if($_SESSION["user"] != $currRole)
 	{
+		//Reirects to home page
 		echo "Failed Gatekeeper Test: | Not correct user | Redirecting to homepage.";
 		pageLoader($path);
 		return false;
