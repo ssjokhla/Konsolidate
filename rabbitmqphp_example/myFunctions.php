@@ -41,6 +41,11 @@ function doLogin($username,$password)
 	//Connects to database
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+
+	if (!$con){
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
 	//Checks username and hashes the password to chek database
 	$s = "select * from members where username = '$username' and password = SHA2('$password',512)";
 	echo "SQL Statement: $s";
