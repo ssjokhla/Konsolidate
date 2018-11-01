@@ -42,7 +42,9 @@ function doLogin($username,$password)
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 
+	//Checking if connected to database
 	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
@@ -80,6 +82,14 @@ function doRegister($username,$password,$role)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+
+	//Checking if connected to database
+        if (!$con){
+                logError("Connection Failed: " . mysqli_connect_error());
+                die("Connection failed: " . mysqli_connect_error());
+        }
+
+
 	echo "Connecting to database\n";
 	//Checks if username already exists
 	$s = "select * from members where username = '$username'";
@@ -112,6 +122,13 @@ function viewReports($therapist)
 
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
+
+	//Checking if connected to database
+        if (!$con){
+                logError("Connection Failed: " . mysqli_connect_error());
+                die("Connection failed: " . mysqli_connect_error());
+        }
+
 	echo "Connected to database\n";
 	//Finds users with their therapist
 	$s = "select * from members where Therapist = '$therapist'";
@@ -149,6 +166,13 @@ function doDownload()
 {
         $con = mysqli_connect("localhost", "admin", "password", "masterDB");
         mysqli_select_db($con, "masterDB");
+
+	//Checking if connected to database
+        if (!$con){
+                logError("Connection Failed: " . mysqli_connect_error());
+                die("Connection failed: " . mysqli_connect_error());
+        }
+
 	//SQL query sent to database to send contents of dataTable to another directory, that directory will forward it to apache server for download
         $s = "select * from dataTable INTO OUTFILE '/var/lib/mysql-files/dataTable.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
         $t = mysqli_query($con, $s);
