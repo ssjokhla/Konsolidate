@@ -4,10 +4,10 @@
 session_start();
 $_SESSION["logged"];
 
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/path.inc');
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/get_host_info.inc');
-require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
-include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
+require_once('/home/qa/Konsolidate/rabbitmqphp_example/path.inc');
+require_once('/home/qa/Konsolidate/rabbitmqphp_example/get_host_info.inc');
+require_once('/home/qa/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
+include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
 
 $client = new rabbitMQClient("testRabbitMQ.ini","loginServer");
 if (isset($argv[1]))

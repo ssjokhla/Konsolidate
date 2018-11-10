@@ -1,5 +1,5 @@
 <?php
-include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
+include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
 session_start();
 echo "Session started";
 $client = new rabbitMQClient("testRabbitMQ.ini","downServer");
