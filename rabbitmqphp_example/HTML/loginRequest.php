@@ -9,7 +9,7 @@ require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/get_host_inf
 require_once('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
 
-$client = new rabbitMQClient("testRabbitMQ.ini","testServer");
+$client = new rabbitMQClient("testRabbitMQ.ini","loginServer");
 if (isset($argv[1]))
 {
   $msg = $argv[1];
