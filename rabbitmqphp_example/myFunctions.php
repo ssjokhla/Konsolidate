@@ -31,7 +31,7 @@ function pageLoader($path)
 	//Printing out path we are redirecting to
 	echo $path;
 	//Redirecting
-	header("Refresh: 3; url=$path");
+	header("Refresh: 0; url=$path");
 }
 
 //Takes user input and checks database to confirm login
