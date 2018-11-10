@@ -1,0 +1,40 @@
+body{
+
+  font: normal 16px Arial, Helvetica, sand-serif;
+  color:#333;
+}
+
+
+html, #particles-js{
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  height: auto;
+  max-width: auto;
+
+
+}
+#title{
+  opacity: 1;
+  padding:2em;
+  position:absolute;
+  border-radius: 15px;
+  top: 15%;
+  left: 33%;
+
+}
+#login{
+  background:#fff;
+  opacity:1;
+  padding:2em;
+  position:absolute;
+  border-radius: 15px;
+  box-shadow: 2px 3px #5f2c82;
+  top:33%;
+  left:40%;
+
+}
+
+
+div.test{
+  display: flex;
+  justify-content: center;
+}

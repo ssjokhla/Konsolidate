@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Particles Login</title>
+  <!-- Bootstrap core CSS -->
+<link href="boostrapcore.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="particles-js">
+  <div id="title">
+    <h1 style="color: White;"><strong>K O N S O L I D A T E<strong></h1>
+    </div>
+    <div id="login">
+      <h1 style="color:#007bff;text-align:center">Login</h1>
+      <form action= "loginRequest.php" method ="get">
+        <div>
+          <input type="text" name = "username" placeholder="Username"><br>
+        </div>
+        <br>
+        <div>
+          <input type="text" name= "password" placeholder="Password"><br>
+        </div>
+        <br><button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Sign in</button>
+        </form>
+        <div class=test><br>
+        <form action = "registration.php" method="get">
+        <button class="btn btn-link" type="submit">Register Here </button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <script>
+    particlesJS.load('particles-js', 'particles.json', function(){
+      console.log('particles.json loaded...');
+    });
+  </script>
+</body>
+</html>
