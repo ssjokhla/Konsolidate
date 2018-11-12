@@ -1,0 +1,8 @@
+Package: testBundle
+Architecture: all
+Maintainer: Christian Acosta
+Depends: debconf (>= 0.1.00), rsync
+Priority: optional
+Version: 0.1
+Description: Testing backup script
+	If this works, will be using it for project.
