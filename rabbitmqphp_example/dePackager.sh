@@ -4,13 +4,13 @@
 #read -p 'Listener (user@IP): ' listener
 
 #Set up watcher on /uploads directory to watch for modified, created, or deleted files 
-inotifywait -r -e modify,create,delete --format '%f' /home/deployment/Konsolidate/Bundler/Packages | while read FILE
+inotifywait -r -e modify,create --format '%f' /home/deployment/Konsolidate/Bundler/Packages | while read FILE
 do
 	
 	echo "File is named $FILE"
 
 
-	sudo apt install $FILE
+	sudo dpkg -i /home/deployment/Konsolidate/Bundler/Packages/$FILE
 	echo "File has been unpackaged and installed"
 
 done
