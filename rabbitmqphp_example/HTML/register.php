@@ -10,14 +10,12 @@
 		echo "SQL Statement: $s";
 		$t = mysqli_query($con, $s);
 		$rowCount = mysqli_num_rows($t);
-
 		if($rowCount > 0)
 		{
 		  echo "Please Choose another username";
 		  logError("Username already in database");
 		  return "Error";
 		}
-
 		else
 		{
 		$r = "Insert into members (Username, Password, Role)
@@ -56,7 +54,7 @@
 		<select name="role" id="role">
 			<option value="Patient">Patient</option>
 			<option value="HCP">HCP</option>
-			<option value="Researcher">Researcher</option
+			<option value="Researcher">Researcher</option>
 		</select> <br>
 		
 	<input type = submit name = "Register" value = "Button">
