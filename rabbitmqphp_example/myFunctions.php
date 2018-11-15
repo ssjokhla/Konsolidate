@@ -25,6 +25,21 @@ function logError($message)
 	$client->send_request($request);
 }
 
+//Description of new row to be added to the packages database
+function devPackage($name, $version, $path, $status = "testing", $description = null)
+{
+	//Creating a new Client for RabbitMQ
+	$client = new rabbitMQClient("testRabbitMQ.ini", "devServer");
+	//New array to eventually send
+	$request = array();
+	$request['type'] = "package";
+	$request['name'] = $name;
+	$request['version'] = $version;
+	$request['path'] = $path;
+	$request['status'] = $status;
+	$request['description'] = $description;
+	$client->send_request($request);
+}
 //Redirects to another page to load
 function pageLoader($path)
 {
@@ -203,6 +218,8 @@ function requestProcessor($request)
 		return viewReports($request['role']);
 	case "down":
 		return doDownload();
+	case "package";
+		return devPackage();
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
