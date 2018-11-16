@@ -37,12 +37,17 @@ function dePackage($name, $version, $path, $status, $description)
 
 	//Checks username and hashes the password to chek database
 	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `Decription`) VALUES ('$name', '$version', '$path', '$status', '$description')";
-	echo "SQL Statement: $s";
+	echo "SQL Statement is: $s";
+	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
 }
 //Description of new row to be added to the packages database
-function devPackage($name, $version, $path, $status = "testing", $description = null)
+function devPackage($name, $version, $path, $status, $description)
 {
+	if($status == "")
+	{
+		$status = "testing";
+	}
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "devServer");
 	//New array to eventually send
