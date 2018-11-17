@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "This script will package a set of files."
+printf "Please enter the name of this package: "
+
+read -r pName
+
+printf "Please enter the version of this package (ex. 1.0, 1.2, etc): "
+
+read -r pVer
+
+printf $pName" , "$pVer "\n"
+
+x="y"
+counter=0
+while [ $x != 'n' ]
+do	
+	counter=$[$counter +1]
+	printf "Please list the path to file then press enter"
+
+	read -r file$counter
+
+	printf "Do you want to add another file? [Y/n] "
+
+	read -r response
+
+	x=$response
+
+done
