@@ -9,7 +9,7 @@ read -r description
 
 echo $name , $version, $description
 
-php ~/IT490/Konsolidate/rabbitmqphp_example/devPackage.php -- '$name $version $description'
+php ~/Konsolidate/rabbitmqphp_example/devPackage.php $name $version $description
 
 #devPackage($name, $version, $path, $status, $description)
 

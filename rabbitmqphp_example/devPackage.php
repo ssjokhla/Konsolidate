@@ -5,10 +5,16 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 include('myFunctions.php');
 
-$name = parse_str($argv[1]);
-$version = parse_str($argv[2]);
-$description = parse_str($argv[3]);
+echo "PHP Script ran\n";
 
-devPackage($name, $version, "/home/samish/IT490/Konsolidate/Bundler/files", "", $description);
+$name = ($argv[1]);
+$version = ($argv[2]);
+$description = ($argv[3]);
+
+echo $name;
+echo $version;
+echo $description;
+
+devPackage($name, $version, "~/Konsolidate/Bundler/files", "", $description);
 
 ?>
