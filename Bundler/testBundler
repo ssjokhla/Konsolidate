@@ -1,29 +1,14 @@
 #!/bin/bash
-
+echo ""
 echo "This script will package a set of files."
-printf "Please enter the name of this package: "
+echo ""
 
-read -r pName
+echo "Make sure to copy the files over to /files/ directory.  Use the command 'cp -r --parents /path/to/file files/'"
 
-printf "Please enter the version of this package (ex. 1.0, 1.2, etc): "
+echo "If not done, please exit out of this program"
 
-read -r pVer
+echo "What do you want to call the package?"
 
-printf $pName" , "$pVer "\n"
+read payload
 
-x="y"
-counter=0
-while [ $x != 'n' ]
-do	
-	counter=$[$counter +1]
-	printf "Please list the path to file then press enter"
-
-	read -r file$counter
-
-	printf "Do you want to add another file? [Y/n] "
-
-	read -r response
-
-	x=$response
-
-done
+tar -czvf $payload.tar.gz ./files
