@@ -11,5 +11,7 @@ echo $name , $version, $description
 
 php ~/Konsolidate/rabbitmqphp_example/devPackage.php $name $version $description
 
+~/Konsolidate/Bundler/Bundler
+
 #devPackage($name, $version, $path, $status, $description)
 
