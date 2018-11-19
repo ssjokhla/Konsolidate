@@ -28,68 +28,56 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 			//return "Complete";
 		}
 	}
- */ 	
+ */
 ?>
-
 <!DOCTYPE html>
-	<style type>
-	#body
-	{
-		height: 350px;
-		width: 750px;
-		margin: auto;
-		border-style: ridge;
-		border-width: 5px;
-		border-radius: 25px;
-		border-color: yellow black yellow black;
-	}
-	</style>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Particles Login</title>
+  <!-- Bootstrap core CSS -->
+<link href="boostrapcore.css" rel="stylesheet">
+<link rel="stylesheet" href="tstyle.css">
+</head>
+<body>
+	<div class="content">
+<div id="title">
+	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
+</div>
+
+		<div id="login">
+      <h1 style="color:#007bff;text-align:center">Register</h1><br>
 
 <!--	<form action = "" method = "get"> -->
 	<form action = "registrationChecker.php" method = "get">
 	<center>
-	<body id = "body">
-		[Register] <br> 
-	<div id = "D">
-	<input type = text name = "username"  placeholder = "username" required autocomplete = "off"/>
-		Enter Username: <br>
-	<input type = text name = "password" placeholder = "password" required autocomplete = "off"/>
-		Enter Password: <br>
-		
-		Choose Your Role:
-		<select name="role" id="role">
+	<input type = text name = "username"  placeholder = "Username" required autocomplete = "off"/>
+	<br><br>
+	<input type = password = "password" placeholder = "Password" required autocomplete = "off"/>
+	<br><br>
+
+	<p style="color:#007bff;text-align:center"><big>Choose your role:</big></p>
+		<div class="btn-group">
+		<select name="role" id="role" class="btn btn-lg btn-primary btn-block">
 			<option value="patient">Patient</option>
 			<option value="HCP">HCP</option>
 			<option value="researcher">Researcher</option>
-		</select> <br>
-		
-	<input type = submit name = "Register" value = "Register">
+		</select>
+	</div>
+
+
+
+	<br><br><input class="btn btn-lg btn-primary btn-block" type = submit name = "Register" value = "Register"> <br>
 	</form>
 
 	<form action = "login.html" method = "get">
-	<input type = submit value = "Back"/>
+	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
+</div>
 
-<!--
-	<br><br><br><a href = "login.html"> [Back to Homepage] </a>
-
-	<button onclick = "message()" name = "Register" value = "Register">Submit</button>
-	
-	<script type= "text/javascript" >
-	var success = "<?php echo $success; ?>";
-	function message()
-	{	
-		if($success == 1)
-		{
-			alert("Successfully made Account!");
-		}
-		else
-		{
-			alert("Please use another username");
-		}
-	}
-	</script>
-
-	</body>
-	</form>
--->
+</div>
+</body>
+</html>

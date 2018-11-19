@@ -19,10 +19,10 @@ else
   //$msg = "test message";
   $msg = "Is this working?!";
 }
-
 $request = array();
 $request['type'] = "login";
 $request['username'] = $_GET['username'];
+$_SESSION["user1"] = $_GET['username'];
 $request['password'] = $_GET['password'];
 $request['message'] = $msg;
 $response = $client->send_request($request);
@@ -42,19 +42,19 @@ switch($payload)
 {
 	case '"patient"':
 		$_SESSION["logged"] = true;			// Logging the patient user
-		$_SESSION["user"] = "patient";	
+		$_SESSION["user"] = "patient";
 		echo "Successful Patient Login \n Redirecting now...";
 		pageLoader("PatientHTML.php");
 		break;
 	case '"researcher"':
 		$_SESSION["logged"] = true;			// Logging the researcher user
-		$_SESSION["user"] = "researcher";	
+		$_SESSION["user"] = "researcher";
 		echo "Successful Researcher Login \n Redirecting now...";
 		pageLoader("ResearcherHTML.php");
 		break;
 	case '"hcp"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
-		$_SESSION["user"] = "hcp";		
+		$_SESSION["user"] = "hcp";
 		$_SESSION["Therapist"] = $_GET['username'];
 		echo "Successful HCP Login \n Redirecting now...";
 		pageLoader("HCPHTML.php");

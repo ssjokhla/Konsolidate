@@ -1,12 +1,16 @@
 <!DOCTYPE>
 <html>
+<head>
+	<link href="boostrapcore.css" rel="stylesheet">
+	<link rel="stylesheet" href="tstyle.css">
+</head>
 <style>
 	table
 	{
 		font-family: arial, sans-serif;
 		border-collapse: collapse;
 		width: 100%;
-	}	
+	}
 
 	td, th
 	{
@@ -14,20 +18,23 @@
 		text-aline: left;
 		padding: 8px;
 	}
-	tr:nth-child(even)
-	{
-		background-color: #dddddd;
-	}
+
 </style>
 
-
-<table border = "1">
+<body>
+<div class = "content">
+		<div id="title">
+<h1 style="color: white;"><strong> <font color ="white"> P A T I E N T &nbsp  D A T A<strong></h1>
+</font>
+</div>
+	<div id="login">
+<table class="table">
 <?php
-	include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
+	include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
 	session_start();
-	echo "Session started";
+
 	$client = new rabbitMQClient("testRabbitMQ.ini","viewServer");
-	echo "Client works";
+
 	$therapist = $_SESSION["Therapist"];
 
 	if(isset($_GET['reports']))
@@ -41,30 +48,35 @@
 		//echo "IT REALLY WORKED:";
 		//echo $payload;
 
+
 		foreach($array as $key => $value)
-		{	
+		{
+			echo "<tr>";
 			if($key != "password")
-			{	
-				echo "<th>" . $key . "</th>";
+			{
+				echo "<th><strong>" . $key . "</strong></th>";
 
 				foreach($value as $key2 => $value2)
-				{	
+				{
 					echo "<td>" . $value2 . "</td>";
+
 				}
+
 			}
+				echo"</tr>";
 		}
 /*
 		echo "<tr>";
 		foreach($array as $key => $value)
-		{		
+		{
 			echo "<th>" . $key . "</th>";
 		}
 		echo "</tr>";
 
 		foreach($array as $key => $value)
-		{	
+		{
 			foreach($value as $key2 => $value2)
-			{	
+			{
 				echo "<tr><td>" . $value2 . "</tr></td>";
 			}
 		}
@@ -72,4 +84,10 @@
 	}
 ?>
 </table>
+<form action = "http://192.168.0.106/HCPHTML.php">
+<input class="btn btn-link btn-lg btn-block" type = submit value = "Back"/>
+</form>
+</div>
+</div>
+</body>
 </html>

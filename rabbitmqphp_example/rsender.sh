@@ -19,4 +19,4 @@ do
 
 done
 
-~/490project/Konsolidate/rabbitmqphp_example/rsender.sh $1
+~/Konsolidate/rabbitmqphp_example/rsender.sh $1
