@@ -5,7 +5,7 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 include('myFunctions.php');
 
-echo "PHP Script ran\n";
+//echo "PHP Script ran\n";
 
 $name = ($argv[1]);
 $version = ($argv[2]);
@@ -15,6 +15,6 @@ echo $name;
 echo $version;
 echo $description;
 
-devPackage($name, $version, "~/Konsolidate/Bundler/files", "", $description);
+devPackage($name, $version, "~/IT490/Konsolidate/Bundler/files", "", $description);
 
 ?>
