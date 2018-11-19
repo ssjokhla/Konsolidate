@@ -65,22 +65,7 @@
 			}
 				echo"</tr>";
 		}
-/*
-		echo "<tr>";
-		foreach($array as $key => $value)
-		{
-			echo "<th>" . $key . "</th>";
-		}
-		echo "</tr>";
 
-		foreach($array as $key => $value)
-		{
-			foreach($value as $key2 => $value2)
-			{
-				echo "<tr><td>" . $value2 . "</tr></td>";
-			}
-		}
-*/
 	}
 ?>
 </table>

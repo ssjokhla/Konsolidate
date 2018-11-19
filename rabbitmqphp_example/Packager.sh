@@ -9,7 +9,11 @@ read -r description
 
 echo $name , $version, $description
 
-php ~/IT490/Konsolidate/rabbitmqphp_example/devPackage.php -- '$name $version $description'
+~/IT490/Konsolidate/Bundler/Bundler.sh 
+
+echo "Packager.sh if statement ran"
+
+php ~/IT490/Konsolidate/rabbitmqphp_example/devPackage.php $name $version $description
 
 #devPackage($name, $version, $path, $status, $description)
 
