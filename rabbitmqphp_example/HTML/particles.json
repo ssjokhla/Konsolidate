@@ -1,7 +1,7 @@
 {
   "particles":{
     "number":{
-      "value":200
+      "value":300
     },
     "color":{
       "value":"#5f2c82"
@@ -52,8 +52,8 @@
         "mode":"repulse"
       },
       "onclick":{
-        "enable": true,
-        "mode":"push"
+        "enable":true ,
+        "mode":"repulse"
       }
     },
     "modes":{

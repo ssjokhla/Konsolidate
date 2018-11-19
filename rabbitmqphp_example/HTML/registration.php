@@ -33,17 +33,21 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
 <link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tstyle.css">
 </head>
+<body>
+	<div class="content">
 <div id="title">
-	<h1 style="color: White;"><strong>K O N S O L I D A T E<strong></h1>
+	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
 </div>
+
 		<div id="login">
       <h1 style="color:#007bff;text-align:center">Register</h1><br>
 
@@ -68,11 +72,12 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 
 	<br><br><input class="btn btn-lg btn-primary btn-block" type = submit name = "Register" value = "Register"> <br>
 	</form>
-		
+
 	<form action = "login.html" method = "get">
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
 </div>
-</body>
 
+</div>
+</body>
 </html>

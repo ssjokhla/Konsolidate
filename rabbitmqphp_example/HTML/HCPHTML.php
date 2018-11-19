@@ -11,6 +11,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<div class="content">
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,10 +19,10 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
 <link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tstyle.css">
 </head>
 <div id="title">
-	<h1 style="color: White;"><strong>H C P<strong></h1>
+	<h1 style="color: blue;"><strong>H C P<strong></h1>
 	</div>
 	  <div id="login">
 	<form action = "UploadProcess.php" method = "post" enctype = "multipart/form-data">
@@ -66,6 +67,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 ?>
 </div>
 </body>
+</div>
 </html>
 <?php
 	#encapsulating HTML so that gateKeeper works

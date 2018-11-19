@@ -9,7 +9,8 @@ session_start();
 	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "patient")){
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<div class="content">
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +18,12 @@ session_start();
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
 <link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tstyle.css">
 </head>
 <center>
 <body>
 	<div id="title">
-		<h1 style="color: White;"><strong>P A T I E N T <strong></h1>
+		<h1 style="color: yellow;"><strong>P A T I E N T <strong></h1>
 		</div>
 		  <div id="login">
 				<h1 style="color:#007bff;text-align:center">Hello!</h1><br>
@@ -31,6 +32,7 @@ session_start();
 				</form>
 </div>
 </body>
+<!-- </div> -->
 </html>
 
 <?php

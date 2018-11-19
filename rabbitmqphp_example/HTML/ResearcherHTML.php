@@ -11,6 +11,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<div class="content">
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +19,12 @@ session_start();
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
 <link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="tstyle.css">
 </head>
 <center>
 <body>
 	<div id="title">
-		<h1 style="color: White;"><strong>R E S E A R C H E R S<strong></h1>
+		<h1 style="color: blue;"><strong>R E S E A R C H E R S<strong></h1>
 		</div>
 		  <div id="login">
 				<form action = "DownloadProcess.php" method = "get">
@@ -35,6 +36,7 @@ session_start();
 				</form>
 </div>
 </body>
+</div>
 </html>
 
 <?php
