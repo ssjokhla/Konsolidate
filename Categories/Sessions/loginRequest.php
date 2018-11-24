@@ -4,12 +4,12 @@
 session_start();
 $_SESSION["logged"];
 
-require_once('/home/qa/Konsolidate/rabbitmqphp_example/path.inc');
-require_once('/home/qa/Konsolidate/rabbitmqphp_example/get_host_info.inc');
-require_once('/home/qa/Konsolidate/rabbitmqphp_example/rabbitMQLib.inc');
-include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
+require_once('~/Konsolidate/Categories/Require/path.inc');
+require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('~/Konsolidate/Categories/Require/rabbitMQLib.inc');
+include('~/Konsolidate/Categories/Sessions/SessionFunctions.php');
 
-$client = new rabbitMQClient("testRabbitMQ.ini","loginServer");
+$client = new rabbitMQClient("~/Konsolidate/Categories/Require/testRabbitMQ.ini","loginServer");
 if (isset($argv[1]))
 {
   $msg = $argv[1];
@@ -44,20 +44,20 @@ switch($payload)
 		$_SESSION["logged"] = true;			// Logging the patient user
 		$_SESSION["user"] = "patient";
 		echo "Successful Patient Login \n Redirecting now...";
-		pageLoader("PatientHTML.php");
+		pageLoader("~/Konsolidate/Categories/Patient/PatientHTML.php");
 		break;
 	case '"researcher"':
 		$_SESSION["logged"] = true;			// Logging the researcher user
 		$_SESSION["user"] = "researcher";
 		echo "Successful Researcher Login \n Redirecting now...";
-		pageLoader("ResearcherHTML.php");
+		pageLoader("~/Konsolidate/Categories/Researcher/ResearcherHTML.php");
 		break;
 	case '"hcp"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
 		$_SESSION["user"] = "hcp";
 		$_SESSION["Therapist"] = $_GET['username'];
 		echo "Successful HCP Login \n Redirecting now...";
-		pageLoader("HCPHTML.php");
+		pageLoader("~/Konsolidate/Categories/HCP/HCPHTML.php");
 		break;
 	default:
 		echo "Failed Login!  Returning to Homepage.";
