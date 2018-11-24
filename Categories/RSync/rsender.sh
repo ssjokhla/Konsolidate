@@ -12,11 +12,11 @@ do
 
 
 	#Sync files to the listeners directory while simultaneously deleting it from local directory
-	rsync -av --remove-source-files /var/www/html/uploads/ $1:~/IT490/Konsolidate/rabbitmqphp_example/RSync/
+	rsync -av --remove-source-files /var/www/html/uploads/ $1:~/Konsolidate/RSync/FileTransfer
 
 	#SSH into listener then run the parser file
-	ssh $1 /home/samish/IT490/Konsolidate/rabbitmqphp_example/testParser2.php $FILE
+	ssh $1 ~/Konsolidate/Categories/Parsing/testParser2.php $FILE
 
 done
 
-~/490project/Konsolidate/rabbitmqphp_example/rsender.sh $1
+~/Konsolidate/Categories/RSync/rsender.sh $1
