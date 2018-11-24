@@ -9,11 +9,11 @@ read -r description
 
 echo $name , $version, $description
 
-~/IT490/Konsolidate/Bundler/createTar.sh 
+~/Konsolidate/Categories/Bundler/createTar.sh 
 
 echo "Packager.sh if statement ran"
 
-php ~/IT490/Konsolidate/rabbitmqphp_example/devPackage.php $name $version $description
+php ~/Konsolidate/Categories/Bundler/devPackage.php $name $version $description
 
 #devPackage($name, $version, $path, $status, $description)
 

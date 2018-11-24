@@ -17,4 +17,4 @@ do
 
 done
 
-~/IT490/Konsolidate/rabbitmqphp_example/rdownload.sh $1
+~/Konsolidate/Categories/RSync/rdownload.sh $1
