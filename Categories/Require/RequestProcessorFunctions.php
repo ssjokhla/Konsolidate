@@ -2,6 +2,9 @@
 require_once('~/Konsolidate/Categories/Require/path.inc');
 require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
 require_once('~/Konsolidate/Categories/Require/rabbitMQLib.inc');
+include('~/Konsolidate/Categories/Download/DownloadFunctions.php');
+include('~/Konsolidate/Categories/Bundler/PackageFunctions.php');
+include('~/Konsolidate/Categories/Log/logFunctions.php');
 //$test = $_SERVER['REMOTE_ADDR'];
 //Danh was here.
 
