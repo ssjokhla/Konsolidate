@@ -1,12 +1,12 @@
 <?php
-include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
+include('~/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
 ?>
 
 
 
 <?php
-	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "patient")){
+	if(gateKeeperLogin("~/Konsolidate/Categories/Sessions/login.html") && gateKeeperRole("~/Konsolidate/Categories/Sessions/login.html", "patient")){
 ?>
 <!DOCTYPE html>
 <!-- <html lang="en"> -->
@@ -17,8 +17,8 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
-<link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="tstyle.css">
+<link href="~/Konsolidate/Categories/Styling/boostrapcore.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Konsolidate/Categories/Styling/tstyle.css">
 </head>
 <center>
 <body>
@@ -27,7 +27,7 @@ session_start();
 		</div>
 		  <div id="login">
 				<h1 style="color:#007bff;text-align:center"> <?php echo $_SESSION["user1"] ; ?> </h1><br>
-				<form action = "logout.php" method = "get">
+				<form action = "~/Konsolidate/Categories/Sessions/logout.php" method = "get">
 					<br><input  class="btn btn-lg btn-primary btn-block" type = submit value = "Logout">
 				</form>
 </div>

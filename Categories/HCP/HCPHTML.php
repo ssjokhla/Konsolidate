@@ -1,5 +1,5 @@
 <?php
-include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
+include('~/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
 ?>
 
@@ -7,7 +7,7 @@ session_start();
 
 
 <?php
-if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
+if(gateKeeperLogin("~/Konsolidate/Categories/Sessions/login.html") && gateKeeperRole("~/Konsolidate/Categories/Sessions/login.html", "hcp")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,14 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
-<link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="tstyle.css">
+<link href="~/Konsolidate/Categories/Styling/boostrapcore.css" rel="stylesheet">
+<link rel="stylesheet" href="~/Konsolidate/Categories/Styling/tstyle.css">
 </head>
 <div id="title">
 	<h1 style="color: white;"><strong>H C P<strong></h1>
 	</div>
 	  <div id="login">
-	<form action = "UploadProcess.php" method = "post" enctype = "multipart/form-data">
+	<form action = "~/Konsolidate/Categories/Upload/UploadProcess.php" method = "post" enctype = "multipart/form-data">
 		  <h1 style="color:#007bff;text-align:center">Choose a File</h1>
 		 <input class="btn btn-lg btn-primary btn-block" type = "file" name = "myFile" id = "myFile"><br><br>
 
@@ -33,18 +33,18 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 	</form>
 
 
-	<form action = "viewReports.php" method = "get">
+	<form action = "~/Konsolidate/Categories/View/viewReports.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" type = submit value = "View Reports" name = "reports">
 	</form>
 
 
-	<form action = "logout.php" method = "get">
+	<form action = "~/Konsolidate/Categories/Sessions/logout.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" ondragover="" type = submit value = "Logout">
 	</form>
 
 <?php
 
-	$client = new rabbitMQClient("testRabbitMQ.ini","downServer");
+	$client = new rabbitMQClient("~/Konsolidate/Categories/Require/testRabbitMQ.ini","downServer");
 	$request = array();
 	$request['type'] = "down";
 //	$response = $client -> send_request($request);
