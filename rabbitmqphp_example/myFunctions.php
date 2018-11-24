@@ -24,7 +24,7 @@ function logError($message)
 	//Sending to logQueue
 	$client->send_request($request);
 }
-function dePackage($name, $version, $path, $status, $description)
+function dePackage($name, $version, $path, $status, $description, $SCP, $PackageName)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
@@ -244,7 +244,7 @@ function requestProcessor($request)
 	case "down":
 		return doDownload();
 	case "package";
-		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description']);
+		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description'],$request['SCP'],$request['PackageName']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
