@@ -26,6 +26,7 @@ function logError($message)
 }
 function dePackage($name, $version, $path, $status, $description, $SCP, $PackageName)
 {
+	shell_exec("scp $SCP:$path/$PackageName ~/test/");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 
@@ -49,7 +50,9 @@ function devPackage($name, $version, $path, $status, $description, $PackageName)
 		$status = "testing";
 	}
 	$whoami = shell_exec("whoami | awk '{print $1}'");
+	$whoami = str_replace("\n", "", $whoami);
 	$IP = shell_exec("hostname -I | awk '{print $1}'");
+	$IP = str_replace("\n", "", $IP);
 	$SCP = $whoami."@".$IP;
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "devServer");
