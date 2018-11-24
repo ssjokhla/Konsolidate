@@ -16,4 +16,3 @@ echo "Packager.sh if statement ran"
 php ~/IT490/Konsolidate/rabbitmqphp_example/devPackage.php $name $version $description
 
 #devPackage($name, $version, $path, $status, $description)
-

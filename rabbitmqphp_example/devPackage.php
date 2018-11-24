@@ -11,10 +11,8 @@ $name = ($argv[1]);
 $version = ($argv[2]);
 $description = ($argv[3]);
 
-echo $name;
-echo $version;
-echo $description;
+$PackageName = $name . ".tar.gz";
 
-devPackage($name, $version, "~/IT490/Konsolidate/Bundler/files", "", $description);
+devPackage($name, $version, "~/IT490/Konsolidate/Bundler/files", "", $description, $PackageName);
 
 ?>

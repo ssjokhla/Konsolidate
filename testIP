@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo `ifconfig enps03 2>/dev/null|awk '/inet/ {print $2}' | sed 's/inet//'`

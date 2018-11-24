@@ -42,12 +42,15 @@ function dePackage($name, $version, $path, $status, $description)
 	echo "Successfully inserted into packages table";
 }
 //Description of new row to be added to the packages database
-function devPackage($name, $version, $path, $status, $description)
+function devPackage($name, $version, $path, $status, $description, $PackageName)
 {
 	if($status == "")
 	{
 		$status = "testing";
 	}
+	$whoami = shell_exec("whoami | awk '{print $1}'");
+	$IP = shell_exec("hostname -I | awk '{print $1}'");
+	$SCP = $whoami."@".$IP;
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "devServer");
 	//New array to eventually send
@@ -58,6 +61,8 @@ function devPackage($name, $version, $path, $status, $description)
 	$request['path'] = $path;
 	$request['status'] = $status;
 	$request['description'] = $description;
+	$request['SCP'] = $SCP;
+	$request['PackageName'] = $PackageName;
 	$client->send_request($request);
 }
 //Redirects to another page to load
