@@ -1,0 +1,46 @@
+body{
+  background: linear-gradient(to left, #43cea2, #185a9d);
+  font: normal 16px Arial, Helvetica, sand-serif;
+  color:#333;
+}
+
+#title{
+  background:#ffff
+  opacity: 10;
+  padding:2em;
+  position:absolute;
+  border-radius: 15px;
+  float: right;
+  clear:right;
+  width: 50%;
+  text-align: center;
+  top: 200px;
+
+}
+#login{
+  background:#fff;
+  opacity:1;
+  padding:2em;
+  position:absolute;
+  border-radius: 15px;
+  box-shadow: 2px 3px #5f2c82;
+  float: right;
+  clear:right;
+  width: 50%;
+  top: 300px;
+
+
+}
+
+.content{
+      background-color: transparent;
+    height: 700px;
+    width: 700px;
+    margin: auto;
+    clear: both;
+}
+
+html{
+  background: transparent;
+
+}
