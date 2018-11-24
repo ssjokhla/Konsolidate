@@ -1,8 +1,8 @@
 <!DOCTYPE>
 <html>
 <head>
-	<link href="boostrapcore.css" rel="stylesheet">
-	<link rel="stylesheet" href="tstyle.css">
+	<link href="~/Konsolidate/Categories/Styling/boostrapcore.css" rel="stylesheet">
+	<link rel="stylesheet" href="~/Konsolidate/Categories/Styling/tstyle.css">
 </head>
 <style>
 	table
@@ -30,10 +30,10 @@
 	<div id="login">
 <table class="table">
 <?php
-	include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
+	//My Functions
 	session_start();
 
-	$client = new rabbitMQClient("testRabbitMQ.ini","viewServer");
+	$client = new rabbitMQClient("~/Konsolidate/Categories/Require/testRabbitMQ.ini","viewServer");
 
 	$therapist = $_SESSION["Therapist"];
 
