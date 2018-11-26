@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "This script will deploy a package to QA."
+echo ""
+printf "Please enter the package category you want to update: "
+read category
+
+php ~/IT490/Konsolidate/rabbitmqphp_example/categoryInfo.php $category
+
+
+#Need to put in an error if previous PHP functino failed.
+
+printf "Please enter the version you want to update: "
+read version
+
+php ~/IT490/Konsolidate/rabbitmqphp_example/updateQA.php $category $version

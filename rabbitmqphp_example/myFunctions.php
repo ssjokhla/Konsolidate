@@ -24,6 +24,58 @@ function logError($message)
 	//Sending to logQueue
 	$client->send_request($request);
 }
+
+#This function will send a message through rabbit with inforation about which version of a package to update
+function updateQA($category, $version)
+{
+	//Creating a new Client for RabbitMQ
+	$client = new rabbitMQClient("testRabbitMQ.ini", "updateQA");
+	//New array to eventually send
+	$request = array();
+	$request['type'] = "updateQA";
+	$request['category'] = $category;
+	$request['version'] = $version;
+	$client->send_request($request);
+
+}
+
+#This function will take the request for a category and return all the versions available
+function versionInfo($category)
+{
+	#Connecting to mysql database
+	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+	mysqli_select_db($con, "masterDB");
+
+	//Checking if connected to database
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+	echo "Connected to database\n";
+	//Finds versions for the category
+	$s = "select * from members";
+	$t = mysqli_query($con,$s);
+	while ($row = mysqli_fetch_row($t)){
+		printf ("%s (%s)\n", $row[0], $row[1]);
+	}
+	mysqli_free_result($t);
+	
+	echo "Query was sent";
+}
+
+#This function will send a rabbitMQ message to deployment that will send over package info and then request the relevant packages to be sent over
+function categoryInfo($category)
+{
+
+	//Creating a new Client for RabbitMQ
+	$client = new rabbitMQClient("testRabbitMQ.ini", "categoryInfo");
+	//New array to eventually send
+	$request = array();
+	$request['type'] = "categoryInfo";
+	$request['category'] = $category;
+	$client->send_request($request);
+}
 function dePackage($name, $version, $path, $status, $description, $SCP, $PackageName)
 {
 	shell_exec("scp $SCP:$path/$PackageName ~/test/");
@@ -127,10 +179,10 @@ function doRegister($username,$password,$role)
 	mysqli_select_db($con, "masterDB");
 
 	//Checking if connected to database
-        if (!$con){
-                logError("Connection Failed: " . mysqli_connect_error());
-                die("Connection failed: " . mysqli_connect_error());
-        }
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
 
 
 	echo "Connecting to database\n";
@@ -167,10 +219,10 @@ function viewReports($therapist)
 	mysqli_select_db($con, "masterDB");
 
 	//Checking if connected to database
-        if (!$con){
-                logError("Connection Failed: " . mysqli_connect_error());
-                die("Connection failed: " . mysqli_connect_error());
-        }
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
 
 	echo "Connected to database\n";
 	//Finds users with their therapist
@@ -207,18 +259,18 @@ function viewReports($therapist)
 //Function called when user wants to download a file
 function doDownload()
 {
-        $con = mysqli_connect("localhost", "admin", "password", "masterDB");
-        mysqli_select_db($con, "masterDB");
+	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+	mysqli_select_db($con, "masterDB");
 
 	//Checking if connected to database
-        if (!$con){
-                logError("Connection Failed: " . mysqli_connect_error());
-                die("Connection failed: " . mysqli_connect_error());
-        }
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
 
 	//SQL query sent to database to send contents of dataTable to another directory, that directory will forward it to apache server for download
-        $s = "select * from dataTable INTO OUTFILE '/var/lib/mysql-files/dataTable.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
-        $t = mysqli_query($con, $s);
+	$s = "select * from dataTable INTO OUTFILE '/var/lib/mysql-files/dataTable.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
+	$t = mysqli_query($con, $s);
 }
 
 //Is called when listener pulls from RabbitMQ
@@ -228,7 +280,7 @@ function requestProcessor($request)
 	var_dump($request);
 	if(!isset($request['type']))
 	{
-	return "ERROR: unsupported message type";
+		return "ERROR: unsupported message type";
 	}
 	switch ($request['type'])
 	{
@@ -246,8 +298,11 @@ function requestProcessor($request)
 		return viewReports($request['role']);
 	case "down":
 		return doDownload();
-	case "package";
+		case "package";
 		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description'],$request['SCP'],$request['PackageName']);
+	case "categoryInfo":
+		return versionInfo($request['category']);
+
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
