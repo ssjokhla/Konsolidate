@@ -1,6 +1,6 @@
 <?php
 
-require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('get_host_info.inc');
 
 class rabbitMQServer
 {
