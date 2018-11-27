@@ -54,36 +54,49 @@ function push($destination, $category, $version)
 	$s = "select * from packages where category = '$category' and version = '$version'";
 	echo "SQL Statement: $s";
 	$t = mysqli_query($con, $s);
-
-	$path = "";
-		
+	$row = mysqli_fetch_row($t);
+	/*
+	foreach($row as $key => $value)
+	{
+		echo "$key is at $value";
+	}
+	 */
+	//$path = $row['path'];
+	//echo "The path should be: $row[3]";
+	//echo "Return array from MySQL is: $row";
+	//$path = "";
+	/*	
 	while($row = mysqli_fetch_assoc($t))
 	{
 		foreach($row as $key => $value)
 		{
-			if($key == 'Path')
+			if($key == "Path")
 			{
+				echo "Path should be set here. \n";
+				echo "Value of key is $key\n";
 				$path = $key;
+				echo "Path has been set. \n";
 			}
 		}
 	}
-	echo $path;
-	if($destination = "PRFE")
+	 */
+	if($destination == "PRFE")
 	{
 		echo "Sending to Prod FrontEnd";	
 	}
-	elseif($destination = "PRBE")
+	elseif($destination == "PRBE")
 	{
 		echo "Sending to Prod Backend";
 	}
-	elseif($destination = "QAFE")
+	elseif($destination == "QAFE")
 	{
 		echo "Sending to QA Frontend";
 	}
-	elseif($destination = "QABE")
+	elseif($destination == "QABE")
 	{
 		//192.168.0.104
-		//shell_exec("scp chris@192.168.0.104:$t ~/test/")
+		shell_exec("scp $row[3] chris@192.168.0.104:~/test");
+		echo "\n";
 		echo "Sending to QA Backend";
 	}
 	else
