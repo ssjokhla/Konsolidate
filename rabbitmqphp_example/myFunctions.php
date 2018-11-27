@@ -29,17 +29,68 @@ function logError($message)
 function pushUpdate($destination, $category, $version)
 {
 	//Creating a new Client for RabbitMQ
-	$client = new rabbitMQClient("testRabbitMQ.ini", "updateQA");
+	$client = new rabbitMQClient("testRabbitMQ.ini", "pushUpdate");
 	//New array to eventually send
 	$request = array();
-	$request['type'] = "updateQA";
-	$request['location'] = $destination
+	$request['type'] = "pushUpdate";
+	$request['destination'] = $destination;
 	$request['category'] = $category;
 	$request['version'] = $version;
 	$client->send_request($request);
 
 }
+function push($destination, $category, $version)
+{
+	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+	mysqli_select_db($con, "masterDB");
 
+	//Checking if connected to database
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+	//Checks username and hashes the password to chek database
+	$s = "select * from packages where category = '$category' and version = '$version'";
+	echo "SQL Statement: $s";
+	$t = mysqli_query($con, $s);
+
+	$path = "";
+		
+	while($row = mysqli_fetch_assoc($t))
+	{
+		foreach($row as $key => $value)
+		{
+			if($key == 'Path')
+			{
+				$path = $key;
+			}
+		}
+	}
+	echo $path;
+	if($destination = "PRFE")
+	{
+		echo "Sending to Prod FrontEnd";	
+	}
+	elseif($destination = "PRBE")
+	{
+		echo "Sending to Prod Backend";
+	}
+	elseif($destination = "QAFE")
+	{
+		echo "Sending to QA Frontend";
+	}
+	elseif($destination = "QABE")
+	{
+		//192.168.0.104
+		//shell_exec("scp chris@192.168.0.104:$t ~/test/")
+		echo "Sending to QA Backend";
+	}
+	else
+	{
+		return "N/A";
+	}
+}
 #This function will take the request for a category and return all the versions available
 function versionInfo($category)
 {
@@ -61,7 +112,7 @@ function versionInfo($category)
 		printf ("%s (%s)\n", $row[0], $row[1]);
 	}
 	mysqli_free_result($t);
-	
+
 	echo "Query was sent";
 }
 
@@ -303,6 +354,8 @@ function requestProcessor($request)
 		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description'],$request['SCP'],$request['PackageName']);
 	case "categoryInfo":
 		return versionInfo($request['category']);
+	case "pushUpdate":
+		return push($request['destination'],$request['category'],$request['version']);
 
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
