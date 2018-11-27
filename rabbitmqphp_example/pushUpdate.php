@@ -7,10 +7,11 @@ include('myFunctions.php');
 
 echo "updatingQA Script ran\n";
 
-$category = ($argv[1]);
-$version = ($argv[2]);
+$destination = ($argv[1]);
+$category = ($argv[2]);
+$version = ($argv[3]);
 
 echo "$category";
 echo "$version";
 
-updateQA($category, $version);
+pushUpdate($category, $version);

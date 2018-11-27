@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "This script will get all the versions and categories of packages."
+echo ""
+printf " "
+
+php ~/IT490/Konsolidate/rabbitmqphp_example/categoryInfo.php

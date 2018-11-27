@@ -26,7 +26,7 @@ function logError($message)
 }
 
 #This function will send a message through rabbit with inforation about which version of a package to update
-function updateQA($category, $version)
+function pushUpdate($destination, $category, $version)
 {
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "updateQA");
