@@ -9,7 +9,7 @@ read -r description
 
 echo $name , $version, $description
 
-~/IT490/Konsolidate/Bundler/Bundler.sh 
+~/IT490/Konsolidate/Bundler/Bundler.sh $name $version 
 
 echo "Packager.sh if statement ran"
 
