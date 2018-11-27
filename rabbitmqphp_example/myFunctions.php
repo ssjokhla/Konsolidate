@@ -33,6 +33,7 @@ function pushUpdate($destination, $category, $version)
 	//New array to eventually send
 	$request = array();
 	$request['type'] = "updateQA";
+	$request['location'] = $destination
 	$request['category'] = $category;
 	$request['version'] = $version;
 	$client->send_request($request);
