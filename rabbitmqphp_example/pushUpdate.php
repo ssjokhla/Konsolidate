@@ -14,4 +14,4 @@ $version = ($argv[3]);
 echo "$category";
 echo "$version";
 
-pushUpdate($category, $version);
+pushUpdate($destination, $category, $version);
