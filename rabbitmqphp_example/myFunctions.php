@@ -95,7 +95,7 @@ function push($destination, $category, $version)
 	elseif($destination == "QABE")
 	{
 		//192.168.0.104
-		shell_exec("scp $row[3] chris@192.168.0.104:~/test");
+		shell_exec("scp $row[3] chris@192.168.0.104:/var/Konsolidate/Pending");
 		echo "\n";
 		echo "Sending to QA Backend";
 	}
