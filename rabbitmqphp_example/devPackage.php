@@ -13,6 +13,6 @@ $description = ($argv[3]);
 
 $PackageName = $name . ".tar.gz";
 
-devPackage($name, $version, "~/IT490/Konsolidate/Bundler/Packages", "", $description, $PackageName);
+devPackage($name, $version, "/var/www/Konsolidate/Pending/Packages", "", $description, $PackageName);
 
 ?>

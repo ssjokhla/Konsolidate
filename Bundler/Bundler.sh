@@ -6,6 +6,6 @@ echo ""
 echo "Enter the category you want to package?"
 read category
 
-tar -czvf ~/IT490/Konsolidate/Bundler/Packages/$1_$2.tar.gz /var/Konsolidate/Categories/$category
+tar -czvf /var/Konsolidate/Bundler/Packages/$1_$2.tar.gz /var/Konsolidate/Categories/$category
 
 check="true"
