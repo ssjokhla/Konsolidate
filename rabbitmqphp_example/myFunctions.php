@@ -119,14 +119,14 @@ function categoryInfo()
 
 	echo "Connected to database\n";
 	//Finds versions for the category
-	$s = "select * from members";
-	$t = mysqli_query($con,$s);
-	while ($row = mysqli_fetch_row($t)){
-		printf ("%s (%s)\n", $row[0], $row[1]);
-	}
-	mysqli_free_result($t);
+	$s = "select * from packages INTO OUTFILE '/var/www/html/packages.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
+	#$t = mysqli_query($con,$s);
+	#while ($row = mysqli_fetch_row($t)){
+	#	printf ("%s (%s)\n", $row[0], $row[1]);
+	#}
+	#mysqli_free_result($t);
 
-	echo "Query was sent";
+	#echo "Query was sent";
 }
 
 function dePackage($name, $version, $path, $status, $SCP, $PackageName)
