@@ -105,7 +105,7 @@ function push($destination, $category, $version)
 	}
 }
 #This function will take the request for a category and return all the versions available
-function versionInfo($category)
+function categoryInfo()
 {
 	#Connecting to mysql database
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
@@ -129,18 +129,6 @@ function versionInfo($category)
 	echo "Query was sent";
 }
 
-#This function will send a rabbitMQ message to deployment that will send over package info and then request the relevant packages to be sent over
-function categoryInfo($category)
-{
-
-	//Creating a new Client for RabbitMQ
-	$client = new rabbitMQClient("testRabbitMQ.ini", "categoryInfo");
-	//New array to eventually send
-	$request = array();
-	$request['type'] = "categoryInfo";
-	$request['category'] = $category;
-	$client->send_request($request);
-}
 function dePackage($name, $version, $path, $status, $SCP, $PackageName)
 {
 	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/");
@@ -363,10 +351,8 @@ function requestProcessor($request)
 		return viewReports($request['role']);
 	case "down":
 		return doDownload();
-		case "package";
+	case "package":
 		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
-	case "categoryInfo":
-		return versionInfo($request['category']);
 	case "pushUpdate":
 		return push($request['destination'],$request['category'],$request['version']);
 
