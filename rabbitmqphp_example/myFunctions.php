@@ -141,7 +141,7 @@ function categoryInfo($category)
 	$request['category'] = $category;
 	$client->send_request($request);
 }
-function dePackage($name, $version, $path, $status, $description, $SCP, $PackageName)
+function dePackage($name, $version, $path, $status, $SCP, $PackageName)
 {
 	shell_exec("scp $SCP:$path/$PackageName /var/Konsolidate/Pending/");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
@@ -154,13 +154,13 @@ function dePackage($name, $version, $path, $status, $description, $SCP, $Package
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `Decription` , `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$description', '$PackageName')";
+	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
 	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
 }
 //Description of new row to be added to the packages database
-function devPackage($name, $version, $path, $status, $description, $PackageName)
+function devPackage($name, $version, $path, $status, $PackageName)
 {
 	if($status == "")
 	{
@@ -180,7 +180,7 @@ function devPackage($name, $version, $path, $status, $description, $PackageName)
 	$request['version'] = $version;
 	$request['path'] = $path;
 	$request['status'] = $status;
-	$request['description'] = $description;
+	//$request['description'] = $description;
 	$request['SCP'] = $SCP;
 	$request['PackageName'] = $PackageName;
 	$client->send_request($request);
@@ -364,7 +364,7 @@ function requestProcessor($request)
 	case "down":
 		return doDownload();
 		case "package";
-		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description'],$request['SCP'],$request['PackageName']);
+		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
 	case "categoryInfo":
 		return versionInfo($request['category']);
 	case "pushUpdate":
