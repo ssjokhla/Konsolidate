@@ -143,7 +143,7 @@ function categoryInfo($category)
 }
 function dePackage($name, $version, $path, $status, $description, $SCP, $PackageName)
 {
-	shell_exec("scp $SCP:$path/$PackageName ~/test/");
+	shell_exec("scp $SCP:$path/$PackageName /var/Konsolidate/Pending/");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 
