@@ -7,10 +7,6 @@ include('myFunctions.php');
 
 echo "PHP Script ran\n";
 
-$category = ($argv[1]);
-
-echo "$category";
-
-categoryInfo($category)
+categoryInfo()
 
 ?>
