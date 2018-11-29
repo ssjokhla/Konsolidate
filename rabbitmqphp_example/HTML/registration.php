@@ -29,6 +29,9 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 		}
 	}
  */
+session_start();
+include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
+if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,8 +66,6 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 		<div class="btn-group">
 		<select name="role" id="role" class="btn btn-lg btn-primary btn-block">
 			<option value="patient">Patient</option>
-			<option value="HCP">HCP</option>
-			<option value="researcher">Researcher</option>
 		</select>
 	</div>
 
@@ -73,7 +74,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<br><br><input class="btn btn-lg btn-primary btn-block" type = submit name = "Register" value = "Register"> <br>
 	</form>
 
-	<form action = "login.html" method = "get">
+	<form action = "HCPHTML.php" method = "get">
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
 </div>
@@ -81,3 +82,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 </div>
 </body>
 </html>
+
+<?php
+}
+?>

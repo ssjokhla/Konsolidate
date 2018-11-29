@@ -37,6 +37,12 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 		<br><input class="btn btn-lg btn-primary btn-block" type = submit value = "View Reports" name = "reports">
 	</form>
 
+	<div class=test><br>
+        	<form action = "registration.php" method="get">
+       		<button class="btn btn-lg btn-primary btn-block" type="submit">Register Here </button>
+      		</form>
+      	</div>
+
 
 	<form action = "logout.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" ondragover="" type = submit value = "Logout">
