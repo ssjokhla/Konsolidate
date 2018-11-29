@@ -51,7 +51,7 @@ function push($destination, $category, $version)
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "select * from packages where category = '$category' and version = '$version'";
+	$s = "select * from packages where name = '$category' and version = '$version'";
 	echo "SQL Statement: $s";
 	$t = mysqli_query($con, $s);
 	$row = mysqli_fetch_row($t);
@@ -95,7 +95,7 @@ function push($destination, $category, $version)
 	elseif($destination == "QABE")
 	{
 		//192.168.0.104
-		shell_exec("scp $row[3] chris@192.168.0.104:/var/Konsolidate/Pending");
+		shell_exec("scp $row[2] qa@192.168.0.105:/var/Konsolidate/Pending");
 		echo "\n";
 		echo "Sending to QA Backend";
 	}
@@ -119,7 +119,7 @@ function categoryInfo()
 
 	echo "Connected to database\n";
 	//Finds versions for the category
-	$s = "select * from packages INTO OUTFILE '/var/www/html/packages.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
+	$s = "select * from packages INTO OUTFILE '/var/lib/mysql-files/packages.csv' Fields enclosed BY '' Terminated by ',' escaped by '\"' Lines Terminated By '\r\n'";
 	#$t = mysqli_query($con,$s);
 	#while ($row = mysqli_fetch_row($t)){
 	#	printf ("%s (%s)\n", $row[0], $row[1]);
