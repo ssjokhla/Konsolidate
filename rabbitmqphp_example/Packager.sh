@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "Please enter the category you want to package"
+printf "Please enter the category you want to package: "
 read -r category
 printf "Please enter the version number: "
 read -r version

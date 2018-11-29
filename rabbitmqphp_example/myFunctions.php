@@ -154,7 +154,7 @@ function dePackage($name, $version, $path, $status, $description, $SCP, $Package
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `Decription`) VALUES ('$name', '$version', '$path', '$status', '$description')";
+	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `Decription` , `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$description', '$PackageName')";
 	echo "SQL Statement is: $s";
 	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
