@@ -9,10 +9,9 @@ include('myFunctions.php');
 
 $name = ($argv[1]);
 $version = ($argv[2]);
-$description = ($argv[3]);
+#$description = ($argv[3]);
+$PackageName = $name."_".$version.".tar.gz";
 
-$PackageName = $name . ".tar.gz";
-
-devPackage($name, $version, "~/IT490/Konsolidate/Bundler/Packages", "", $description, $PackageName);
+devPackage($name, $version, "/var/Konsolidate/Pending/$PackageName", "", $PackageName);
 
 ?>
