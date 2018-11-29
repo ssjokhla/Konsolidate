@@ -13,5 +13,5 @@ do
 
 done
 
-var/Konsolidate/installer.sh
+/var/Konsolidate/installer.sh
 
