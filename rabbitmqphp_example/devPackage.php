@@ -12,6 +12,6 @@ $version = ($argv[2]);
 #$description = ($argv[3]);
 $PackageName = $name."_".$version.".tar.gz";
 
-devPackage($name, $version, "/var/Konsolidate/Pending/Packages/$PackageName", "", $PackageName);
+devPackage($name, $version, "/var/Konsolidate/Pending/$PackageName", "", $PackageName);
 
 ?>
