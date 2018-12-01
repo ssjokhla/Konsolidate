@@ -154,6 +154,35 @@ LOCK TABLES `members` WRITE;
 INSERT INTO `members` VALUES ('Matt','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','researcher',NULL),('Tekken','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','patient','testHCP'),('testHCP','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','hcp',NULL),('testPatient','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','patient','testHCP'),('testResearcher','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','researcher',NULL),('testUser','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','researcher',NULL);
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `patientInfo`
+--
+
+DROP TABLE IF EXISTS `patientInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `patientInfo` (
+  `ID` varchar(255) NOT NULL,
+  `Patient Group` int(11) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `Gender` int(11) NOT NULL,
+  `Time Since Stroke` int(11) NOT NULL,
+  `Affected Hand` int(11) NOT NULL,
+  `Handedness` varchar(10) NOT NULL,
+  `Lesion Location` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patientInfo`
+--
+
+LOCK TABLES `patientInfo` WRITE;
+/*!40000 ALTER TABLE `patientInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patientInfo` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -164,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-10 10:14:05
+-- Dump completed on 2018-12-01 13:40:12
