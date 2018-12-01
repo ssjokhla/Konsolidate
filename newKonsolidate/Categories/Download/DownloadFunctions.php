@@ -1,7 +1,7 @@
 <?php
-require_once('~/Konsolidate/Categories/Require/path.inc');
-require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
-require_once('~/Konsolidate/Categories/Require/rabbitMQLib.inc');
+require_once('/var/Konsolidate/Categories/Require/path.inc');
+require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
 
 //Function called when user wants to download a file
 function doDownload()

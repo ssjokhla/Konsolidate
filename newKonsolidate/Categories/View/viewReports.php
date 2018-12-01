@@ -1,8 +1,8 @@
 <!DOCTYPE>
 <html>
 <head>
-	<link href="~/Konsolidate/Categories/Styling/boostrapcore.css" rel="stylesheet">
-	<link rel="stylesheet" href="~/Konsolidate/Categories/Styling/tstyle.css">
+	<link href="/var/Konsolidate/Categories/Styling/boostrapcore.css" rel="stylesheet">
+	<link rel="stylesheet" href="/var/Konsolidate/Categories/Styling/tstyle.css">
 </head>
 <style>
 	table
@@ -33,7 +33,7 @@
 	//My Functions
 	session_start();
 
-	$client = new rabbitMQClient("~/Konsolidate/Categories/Require/testRabbitMQ.ini","viewServer");
+	$client = new rabbitMQClient("/var/Konsolidate/Categories/Require/testRabbitMQ.ini","viewServer");
 
 	$therapist = $_SESSION["Therapist"];
 

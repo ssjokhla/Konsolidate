@@ -1,9 +1,9 @@
 <?php
 
-require_once('~/Konsolidate/Categories/Require/Path.inc');
-require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
-require_once('~/Konsolidate/Categories/Require/rabbitMQLib.inc');
-include('~/Konsolidate/Categories/Bundler/PackageFunctions.php');
+require_once('/var/Konsolidate/Categories/Categories/Require/Path.inc');
+require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
+include('/var/Konsolidate/Categories/Bundler/PackageFunctions.php');
 
 //echo "PHP Script ran\n";
 

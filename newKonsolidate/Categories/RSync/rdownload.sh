@@ -3,11 +3,11 @@
 #Ask for listener username and IP
 #read -p 'Listener (user@IP): ' listener
 
-#Set up watcher on /uploads directory to watch for modified, created, or deleted files 
+#Set up watcher on /uploads directory to watch for modified, created, or deleted files
 echo "Listener: $1"
 inotifywait -r -e modify,create,delete --format '%f' /var/lib/mysql-files | while read FILE
 do
-	
+
 	echo "File is named $FILE"
 
 
@@ -17,4 +17,4 @@ do
 
 done
 
-~/Konsolidate/Categories/RSync/rdownload.sh $1
+/var/Konsolidate/Categories/RSync/rdownload.sh $1

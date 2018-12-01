@@ -40,7 +40,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
   <title>Particles Login</title>
   <!-- Bootstrap core CSS -->
 <link href="boostrapcore.css" rel="stylesheet">
-<link rel="stylesheet" href="tstyle.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="content">
@@ -56,7 +56,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<center>
 	<input type = text name = "username"  placeholder = "Username" required autocomplete = "off"/>
 	<br><br>
-	<input type = password = "password" placeholder = "Password" required autocomplete = "off"/>
+	<input type = password name = "password" placeholder = "Password" required autocomplete = "off"/>
 	<br><br>
 
 	<p style="color:#007bff;text-align:center"><big>Choose your role:</big></p>

@@ -11,6 +11,6 @@ echo "What do you want to call the package?"
 
 read payload
 
-tar -czvf /usr/lib/packages/$payload.tar.gz ~/Konsolidate/Categories/Bundler/files/
+tar -czvf /usr/lib/packages/$payload.tar.gz /var/Konsolidate/Categories/Bundler/files/
 
 check="true"
