@@ -1,6 +1,6 @@
 <?php
-include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
-
+include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
+include('RegistrationFunctions.php');
 $client = new rabbitMQClient("testRabbitMQ.ini","registerServer");
 if(isset($_GET['Register']))
 {
