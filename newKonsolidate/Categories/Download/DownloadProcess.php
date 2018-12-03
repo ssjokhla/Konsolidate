@@ -1,11 +1,10 @@
 <?php
-<<<<<<< HEAD
-include('~/Konsolidate/Download/DownloadFunctions.php');
-=======
+
+include('/var/Konsolidate/Categories/Download/DownloadFunctions.php');
 //include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
-require_once('~/Konsolidate/Categories/Require/testRabbitMQ.ini');
-include('~/Konsolidate/Categories/Download/DownloadFunctions.php');
->>>>>>> 3d3cfb9c59f458d5765b0c765b0003d795735b52
+require_once('/var/Konsolidate/Categories/Require/testRabbitMQ.ini');
+include('/var/Konsolidate/Categories/Download/DownloadFunctions.php');
+
 session_start();
 echo "Session started";
 $client = new rabbitMQClient("testRabbitMQ.ini","downServer");
@@ -36,13 +35,12 @@ else
 	<a href="downloads/
 <?php
 		echo $files[$i];
-			
+
 ?>
 "><?php echo $files[$i]; ?></a>
 			</p>
 <?php
 	}
- 
+
 ?>
 </html>
- 

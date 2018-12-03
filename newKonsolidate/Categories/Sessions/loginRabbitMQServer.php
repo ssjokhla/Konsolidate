@@ -1,9 +1,9 @@
 #!/usr/bin/php
 <?php
-require_once('../Require/path.inc');
-require_once('../Require/get_host_info.inc');
-require_once('../Require/rabbitMQLib.inc');
-include('../Require/RequestProcessorFunctions.php');
+require_once('/var/Konsolidate/Categories/Require/path.inc');
+require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
+include('/var/Konsolidate/Categories/Require/RequestProcessorFunctions.php');
 
 $server = new rabbitMQServer("testRabbitMQ.ini","loginServer");
 echo "loginRabbitMQServer BEGIN".PHP_EOL;
