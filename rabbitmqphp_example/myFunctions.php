@@ -144,8 +144,9 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
 	$v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = $name)";
 	$version = mysqli_query($con, $v);
 	echo "Version variable is $version";
+	$newVersion = $version + 1;
 	//Checks username and hashes the password to chek database
-	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$PackageName')";
+	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$path', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
 	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
