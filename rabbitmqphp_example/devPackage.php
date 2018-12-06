@@ -8,10 +8,8 @@ include('myFunctions.php');
 //echo "PHP Script ran\n";
 
 $name = ($argv[1]);
-$version = ($argv[2]);
-#$description = ($argv[3]);
-$PackageName = $name."_".$version.".tar.gz";
+$PackageName = $name.".tar.gz";
 
-devPackage($name, $version, "/var/Konsolidate/Pending/$PackageName", "", $PackageName);
+devPackage($name, "/var/Konsolidate/Pending/$PackageName", "", $PackageName);
 
 ?>
