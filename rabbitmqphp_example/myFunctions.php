@@ -95,7 +95,7 @@ function push($destination, $category, $version)
 	elseif($destination == "QABE")
 	{
 		//192.168.0.104
-		shell_exec("scp $row[2] qa@10.204.88.14:/var/Konsolidate/Pending");
+		shell_exec("scp $row[2] qa@192.168.0.102:/var/Konsolidate/Pending");
 		echo "\n";
 		echo "Sending to QA Backend";
 	}
@@ -129,7 +129,7 @@ function categoryInfo()
 	#echo "Query was sent";
 }
 
-function dePackage($name, $version, $path, $status, $SCP, $PackageName)
+function dePackage($name, $path, $status, $SCP, $PackageName)
 {
 	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
@@ -141,6 +141,9 @@ function dePackage($name, $version, $path, $status, $SCP, $PackageName)
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
+	$v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = $name)";
+	$version = mysqli_query($con, $v);
+	echo "Version variable is $version";
 	//Checks username and hashes the password to chek database
 	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
