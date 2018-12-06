@@ -26,7 +26,7 @@ function logError($message)
 }
 
 #This function will send a message through rabbit with inforation about which version of a package to update
-function pushUpdate($destination, $category, $version)
+function pushUpdate($destination, $category)
 {
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "pushUpdate");
@@ -35,11 +35,10 @@ function pushUpdate($destination, $category, $version)
 	$request['type'] = "pushUpdate";
 	$request['destination'] = $destination;
 	$request['category'] = $category;
-	$request['version'] = $version;
 	$client->send_request($request);
 
 }
-function push($destination, $category, $version)
+function push($destination, $category)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
@@ -51,7 +50,7 @@ function push($destination, $category, $version)
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "select * from packages where name = '$category' and version = '$version'";
+	$s = "select * from packages where version = (SELECT MAX(Version) FROM packages where Name = '$category')";
 	echo "SQL Statement: $s";
 	$t = mysqli_query($con, $s);
 	$row = mysqli_fetch_row($t);
@@ -154,7 +153,7 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
 	echo "Successfully inserted into packages table";
 }
 //Description of new row to be added to the packages database
-function devPackage($name, $version, $path, $status, $PackageName)
+function devPackage($name, $path, $status, $PackageName)
 {
 	if($status == "")
 	{
@@ -171,7 +170,6 @@ function devPackage($name, $version, $path, $status, $PackageName)
 	$request = array();
 	$request['type'] = "package";
 	$request['name'] = $name;
-	$request['version'] = $version;
 	$request['path'] = $path;
 	$request['status'] = $status;
 	//$request['description'] = $description;
@@ -358,9 +356,9 @@ function requestProcessor($request)
 	case "down":
 		return doDownload();
 	case "package":
-		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
+		return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
 	case "pushUpdate":
-		return push($request['destination'],$request['category'],$request['version']);
+		return push($request['destination'],$request['category']);
 
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
