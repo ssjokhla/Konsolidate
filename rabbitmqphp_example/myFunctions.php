@@ -130,7 +130,7 @@ function categoryInfo()
 
 function dePackage($name, $path, $status, $SCP, $PackageName)
 {
-	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/");
+//	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/$name\_$newVersion");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 
@@ -146,8 +146,10 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
 	$versionNum = $row[0];
 	$newVersion = $versionNum + 1;
 
+	$newPath = "/var/Konsolidate/Pending/$name\_$newVersion";	
+	shell_exec("scp $SCP:$path $newPath");
 	//Checks username and hashes the password to chek database
-	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$path', '$status', '$PackageName')";
+	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$newPath', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
 	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
