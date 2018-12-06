@@ -141,10 +141,12 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = $name)";
+	$v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = 'test')";
 	$version = mysqli_query($con, $v);
-	echo "Version variable is $version";
-	$newVersion = $version + 1;
+	$row = mysqli_fetch_row($version);
+	$versionNum = $row[0];
+	$newVersion = $versionNum + 1;
+
 	//Checks username and hashes the password to chek database
 	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$path', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
