@@ -146,7 +146,7 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
 	$versionNum = $row[0];
 	$newVersion = $versionNum + 1;
 
-	$newPath = "/var/Konsolidate/Pending/$name\_$newVersion";	
+	$newPath = "/var/Konsolidate/Pending/$name"."_"."$newVersion.tar.gz";	
 	shell_exec("scp $SCP:$path $newPath");
 	//Checks username and hashes the password to chek database
 	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$newPath', '$status', '$PackageName')";
