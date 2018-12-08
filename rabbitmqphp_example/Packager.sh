@@ -5,7 +5,7 @@ read -r category
 
 echo $category , $version #$description
 
-tar -czvf /var/Konsolidate/Pending/$category.tar.gz /var/Konsolidate/Categories/$category
+tar -czvfP /var/Konsolidate/Pending/$category.tar.gz -P /var/Konsolidate/Categories/$category
 
 echo "Packager.sh if statement ran"
 
