@@ -2,16 +2,10 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
-#include('../Download/DownloadFunctions.php');
-#include('../Bundler/PackageFunctions.php');
-#include('../Log/logFunctions.php');
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 include('/var/Konsolidate/Categories/Register/RegistrationFunctions.php');
-//$test = $_SERVER['REMOTE_ADDR'];
-//Danh was here.
 
 
-//Is called when listener pulls from RabbitMQ
 function requestProcessor($request)
 {
 	echo "received request".PHP_EOL;
@@ -26,7 +20,6 @@ function requestProcessor($request)
 		return doLogin($request['username'],$request['password']);
 	case "validate_session":
 		return doValidate($request['sessionId']);
-		//Setting up another case to run when we run logError
 	case "log":
 		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
 		error_log($message,3,"/var/Konsolidate/Categories/Log/Logs/master.log");
@@ -41,7 +34,3 @@ function requestProcessor($request)
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
-
-
-
-?>
