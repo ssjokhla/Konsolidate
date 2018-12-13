@@ -77,7 +77,7 @@ if [ "$output" == "$be" ]; then
 
 #Files within Startup directory
         cp Categories/Startup/backendListeners.sh /var/Konsolidate/Categories/Startup
-        cp Categories/Sessions/RunBackendListeners.service /var/Konsolidate/Categories/Startup/
+        cp Categories/Startup/RunBackendListeners.service /var/Konsolidate/Categories/Startup/
 	cp /var/Konsolidate/Categories/Startup/RunBackendListeners.service /etc/systemd/system/
 	systemctl daemon-reload
 	systemctl enable RunBackendListeners.service
