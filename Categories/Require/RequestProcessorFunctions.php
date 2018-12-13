@@ -36,8 +36,11 @@ function requestProcessor($request)
 		return viewReports($request['role']);
 	case "down":
 		return doDownload();
-	case "package";
-		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description']);
+	case "package":
+                return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
+        case "pushUpdate":
+                return push($request['destination'],$request['category']);
+
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
