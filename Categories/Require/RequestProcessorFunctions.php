@@ -7,6 +7,7 @@ require_once('rabbitMQLib.inc');
 #include('../Log/logFunctions.php');
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 include('/var/Konsolidate/Categories/Register/RegistrationFunctions.php');
+include('/var/Konsolidate/Categories/Failover/IPFunctions.php');
 //$test = $_SERVER['REMOTE_ADDR'];
 //Danh was here.
 
@@ -38,6 +39,8 @@ function requestProcessor($request)
 		return doDownload();
 	case "package";
 		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['description']);
+	case "IP";
+		return changeIP($request['IP']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
