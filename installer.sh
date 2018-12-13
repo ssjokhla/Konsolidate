@@ -28,6 +28,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Upload
 	mkdir /var/Konsolidate/Categories/View
 	mkdir /var/Konsolidate/Categories/Startup
+	mkdir /var/Konsolidate/Categories/Failover
 
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
@@ -86,6 +87,8 @@ if [ "$output" == "$be" ]; then
 
 #Files within Upload directory (currently none as of now)
 	
+#Files within Failover directory
+	cp Categories/Failover/* /var/Konsolidate/Categories/Failover
 
 #Files within View directory
 	cp Categories/View/viewRabbitMQServer.php /var/Konsolidate/Categories/View/
@@ -155,6 +158,10 @@ elif [ "$output" == "$fe" ]; then
 
 #Files within Styling directory
 	cp Categories/Styling/* /var/www/html
+
+#Files within Failover directory
+	cp Categories/Failover/* /var/Konsolidate/Categories/Failover
+
 
 	echo "YOU FRONTEND"
 }

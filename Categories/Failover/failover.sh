@@ -11,11 +11,12 @@ if [ $? -eq 0 ]; then				#If the ping went through, zero will result.
 else
 {	
 	echo "Currently not working: $(date)"
-	IP=$(hostname -I)			#Grabs the IP of this system.
-	echo "Switching to: $IP"
+	hostname -I > backEndIP.txt
+	#IP=$(hostname -I)			#Grabs the IP of this system.
 
-	php /var/Konsolidate/Categories/Failover/sendIP.php $IP
+	scp backEndIP.txt chris@192.168.0.100:/tmp/
 
+       	#php /home/qa/Konsolidate/Categories/Failover/sendIP.php
 
 
 	#sed -i "/.*BROKER_HOST =.*/c\BROKER_HOST = $IP" /var/Konsolidate/Categories/Require/testRabbitMQ.ini		This will be used by all other VMs to allow for connection
