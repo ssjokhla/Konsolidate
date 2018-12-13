@@ -26,7 +26,7 @@ function logError($message)
 }
 
 #This function will send a message through rabbit with inforation about which version of a package to update
-function pushUpdate($destination, $category, $version)
+function pushUpdate($destination, $category)
 {
 	//Creating a new Client for RabbitMQ
 	$client = new rabbitMQClient("testRabbitMQ.ini", "pushUpdate");
@@ -35,11 +35,10 @@ function pushUpdate($destination, $category, $version)
 	$request['type'] = "pushUpdate";
 	$request['destination'] = $destination;
 	$request['category'] = $category;
-	$request['version'] = $version;
 	$client->send_request($request);
 
 }
-function push($destination, $category, $version)
+function push($destination, $category)
 {
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
@@ -51,7 +50,7 @@ function push($destination, $category, $version)
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "select * from packages where name = '$category' and version = '$version'";
+	$s = "select * from packages where version = (SELECT MAX(Version) FROM packages where Name = '$category')";
 	echo "SQL Statement: $s";
 	$t = mysqli_query($con, $s);
 	$row = mysqli_fetch_row($t);
@@ -95,7 +94,7 @@ function push($destination, $category, $version)
 	elseif($destination == "QABE")
 	{
 		//192.168.0.104
-		shell_exec("scp $row[2] qa@192.168.0.105:/var/Konsolidate/Pending");
+		shell_exec("scp $row[2] qa@192.168.0.102:/var/Konsolidate/Pending");
 		echo "\n";
 		echo "Sending to QA Backend";
 	}
@@ -129,9 +128,9 @@ function categoryInfo()
 	#echo "Query was sent";
 }
 
-function dePackage($name, $version, $path, $status, $SCP, $PackageName)
+function dePackage($name, $path, $status, $SCP, $PackageName)
 {
-	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/");
+//	shell_exec("scp $SCP:$path /var/Konsolidate/Pending/$name\_$newVersion");
 	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
 	mysqli_select_db($con, "masterDB");
 
@@ -141,14 +140,22 @@ function dePackage($name, $version, $path, $status, $SCP, $PackageName)
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
+	$v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = 'test')";
+	$version = mysqli_query($con, $v);
+	$row = mysqli_fetch_row($version);
+	$versionNum = $row[0];
+	$newVersion = $versionNum + 1;
+
+	$newPath = "/var/Konsolidate/Pending/$name"."_"."$newVersion.tar.gz";	
+	shell_exec("scp $SCP:$path $newPath");
 	//Checks username and hashes the password to chek database
-	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$version', '$path', '$status', '$PackageName')";
+	$s = "INSERT INTO `packages` (`Name`, `Version`, `Path`, `Status`, `PackageName`) VALUES ('$name', '$newVersion', '$newPath', '$status', '$PackageName')";
 	echo "SQL Statement is: $s";
 	mysqli_query($con, $s);
 	echo "Successfully inserted into packages table";
 }
 //Description of new row to be added to the packages database
-function devPackage($name, $version, $path, $status, $PackageName)
+function devPackage($name, $path, $status, $PackageName)
 {
 	if($status == "")
 	{
@@ -165,7 +172,6 @@ function devPackage($name, $version, $path, $status, $PackageName)
 	$request = array();
 	$request['type'] = "package";
 	$request['name'] = $name;
-	$request['version'] = $version;
 	$request['path'] = $path;
 	$request['status'] = $status;
 	//$request['description'] = $description;
@@ -352,9 +358,9 @@ function requestProcessor($request)
 	case "down":
 		return doDownload();
 	case "package":
-		return dePackage($request['name'],$request['version'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
+		return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
 	case "pushUpdate":
-		return push($request['destination'],$request['category'],$request['version']);
+		return push($request['destination'],$request['category']);
 
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");

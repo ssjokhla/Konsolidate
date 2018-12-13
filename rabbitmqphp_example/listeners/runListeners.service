@@ -1,0 +1,14 @@
+[Unit]
+Description=Test devRabbit listener service.
+StartLimitBurst=5
+StartLimitInervalSec=10
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /home/deployment/Konsolidate/rabbitmqphp_example/listeners/runListeners.sh
+User=deployment
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

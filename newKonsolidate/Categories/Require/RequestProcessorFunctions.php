@@ -5,7 +5,8 @@ require_once('rabbitMQLib.inc');
 #include('../Download/DownloadFunctions.php');
 #include('../Bundler/PackageFunctions.php');
 #include('../Log/logFunctions.php');
-include('../Sessions/SessionFunctions.php');
+include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
+include('/var/Konsolidate/Categories/Register/RegistrationFunctions.php');
 //$test = $_SERVER['REMOTE_ADDR'];
 //Danh was here.
 
@@ -28,7 +29,7 @@ function requestProcessor($request)
 		//Setting up another case to run when we run logError
 	case "log":
 		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
-		error_log($message,3,"~/Konsolidate/Categories/Log/Logs/master.log");
+		error_log($message,3,"/var/Konsolidate/Categories/Log/Logs/master.log");
 	case "reg":
 		return doRegister($request['username'],$request['password'],$request['role']);
 	case "view":

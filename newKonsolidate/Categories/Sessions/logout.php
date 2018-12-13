@@ -1,5 +1,5 @@
 <?php
-include('~/Konsolidate/Categories/Sessions/SessionFunctions.php');
+include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
 
 gateKeeperLogin("login.html");

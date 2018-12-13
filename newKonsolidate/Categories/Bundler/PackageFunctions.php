@@ -1,8 +1,8 @@
 <?php
-require_once('~/Konsolidate/Categories/Require/path.inc');
-require_once('~/Konsolidate/Categories/Require/get_host_info.inc');
-require_once('~/Konsolidate/Categories/Require/rabbitMQLib.inc');
-require_once('~/Konsolidate/Categories/Require/testRabbitMQ.ini');
+require_once('/var/Konsolidate/Categories/Require/path.inc');
+require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
+require_once('/var/Konsolidate/Categories/Require/testRabbitMQ.ini');
 
 function dePackage($name, $version, $path, $status, $description)
 {
