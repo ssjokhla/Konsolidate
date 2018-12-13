@@ -1,10 +1,12 @@
 [Unit]
 Description=Runs Backend RabbitMQ Listeners
-After=network.target
+StartLimitBurst=5
+StartLimitIntervalSec=0
 
 [Service]
-ExecStart=/var/Konsolidate/Categories/Startup/backendListeners.sh
+ExecStart=/bin/bash /var/Konsolidate/Categories/Startup/backendListeners.sh
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

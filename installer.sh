@@ -27,6 +27,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Sessions
 	mkdir /var/Konsolidate/Categories/Upload
 	mkdir /var/Konsolidate/Categories/View
+	mkdir /var/Konsolidate/Categories/Startup
 
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
@@ -73,6 +74,15 @@ if [ "$output" == "$be" ]; then
 #Files within Sessions directory
 	cp Categories/Sessions/loginRabbitMQServer.php /var/Konsolidate/Categories/Sessions/
 	cp Categories/Sessions/SessionFunctions.php /var/Konsolidate/Categories/Sessions/
+
+#Files within Startup directory
+        cp Categories/Startup/backendListeners.sh /var/Konsolidate/Categories/Startup
+        cp Categories/Sessions/RunBackendListeners.service /var/Konsolidate/Categories/Startup/
+	cp /var/Konsolidate/Categories/Startup/RunBackendListeners.service /etc/systemd/system/
+	systemctl daemon-reload
+	systemctl enable RunBackendListeners.service
+	systemctl stop RunBackendListeners.service
+	systemctl start RunBackendListeners.service
 
 #Files within Upload directory (currently none as of now)
 	
