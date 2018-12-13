@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs Frontend RabbitMQ Listeners
+After=network.target
+
+[Service]
+ExecStart=/var/Konsolidate/Categories/Startup/frontendListeners.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
