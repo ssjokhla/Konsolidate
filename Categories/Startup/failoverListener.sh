@@ -1,4 +1,4 @@
 #!/bin/bash
 
-/var/Konsolidate/Categories/Failover/watcher.sh
+/var/Konsolidate/Categories/Failover/pinger.sh
 

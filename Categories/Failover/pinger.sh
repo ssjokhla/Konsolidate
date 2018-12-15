@@ -10,10 +10,10 @@ if [ $? -eq 0 ]; then                           #If the ping went through, zero 
 else
 {
 	echo "Currently not working: $(date)"
-        hostname -I > /var/Konsolidate/Categories/Failover/backEndIP.txt
+        hostname -I > /var/Konsolidate/Categories/Failover/ChangeFile/backEndIP.txt
         #IP=$(hostname -I)                      #Grabs the IP of this system.
 
-        scp backEndIP.txt qa@192.168.0.108:/var/Konsolidate/Categories/Failover/ChangeFile	
+        scp /var/Konsolidate/Categories/Failover/ChangeFile/backEndIP.txt qa@192.168.0.108:/var/Konsolidate/Categories/Failover/ChangeFile	
 	sudo systemctl stop RunFailoverListener.service
 }
 fi

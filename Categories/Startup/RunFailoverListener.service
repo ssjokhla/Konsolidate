@@ -3,10 +3,15 @@ Description=Runs failover Listeners
 StartLimitBurst=5
 StartLimitIntervalSec=0
 
+[Timer]
+OnActiveSec=1
+OnUnitActiveSec=1
+
 [Service]
 ExecStart=/bin/bash /var/Konsolidate/Categories/Startup/failoverListener.sh
 Restart=always
 RestartSec=5
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=timers.target
+
