@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then                           #If the ping went through, zero 
 }
 else
 {
-        echo "Currently not working: $(date)"
+	echo "Currently not working: $(date)"
         hostname -I > /var/Konsolidate/Categories/Failover/backEndIP.txt
         #IP=$(hostname -I)                      #Grabs the IP of this system.
 
