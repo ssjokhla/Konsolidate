@@ -30,6 +30,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/View
 	mkdir /var/Konsolidate/Categories/Startup
 	mkdir /var/Konsolidate/Categories/Failover
+	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
@@ -111,6 +112,8 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/RSync
 	mkdir /var/Konsoliate/Categories/FileTransfer
 	mkdir /var/Konsolidate/Categories/Sessions
+	mkdir /var/Konsolidate/Categories/Failover
+	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
