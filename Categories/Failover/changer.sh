@@ -10,6 +10,8 @@ if [ ! -f /var/Konsolidate/Categories/Failover/ChangeFile/backEndIP.txt ]; then
 		IPR=`cat /var/Konsolidate/Categories/Failover/ChangeFile/$FILE`
 
 		sudo sed -i "/.*BROKER_HOST =.*/c\BROKER_HOST = $IPR" /var/Konsolidate/Categories/Require/testRabbitMQ.ini          # This will be used by all other VMs to allow for connection
+		sudo systemctl stop RunBackendListeners.service
+		sudo systemctl start RunBackendListeners.service
 
 		echo "Yay this worked"
 
