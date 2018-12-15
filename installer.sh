@@ -24,6 +24,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Register
 	mkdir /var/Konsolidate/Categories/Require
 	mkdir /var/Konsolidate/Categories/RSync
+	mkdir /var/Konsolidate/Categories/RSync/FileTransfer
 	mkdir /var/Konsolidate/Categories/Sessions
 	mkdir /var/Konsolidate/Categories/Upload
 	mkdir /var/Konsolidate/Categories/View
@@ -108,6 +109,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/Register
 	mkdir /var/Konsolidate/Categories/Require
 	mkdir /var/Konsolidate/Categories/RSync
+	mkdir /var/Konsoliate/Categories/FileTransfer
 	mkdir /var/Konsolidate/Categories/Sessions
 
 #Files for Extras/Pending/Trashed directory
