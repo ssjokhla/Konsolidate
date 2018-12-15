@@ -14,6 +14,7 @@ do
 
 done
 
+sudo /var/Konsolidate/Categories/Failover/changer.sh
 ~                                                                                                                                                                                                           
 ~                                                                                                                                                                                                           
 ~                                                                                                                                                                                                           
