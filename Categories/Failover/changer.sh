@@ -1,7 +1,4 @@
 #!/bin/bash
- 
-if [ ! -f /var/Konsolidate/Categories/Failover/ChangeFile/backEndIP.txt ]; then
-{	
 		inotifywait -r -e modify,create --format '%f' /var/Konsolidate/Categories/Failover/ChangeFile | while read FILE 
 	do
 		sleep 5s
@@ -16,6 +13,4 @@ if [ ! -f /var/Konsolidate/Categories/Failover/ChangeFile/backEndIP.txt ]; then
 		echo "Yay this worked"
 
 	done
-}
-fi
 sudo /var/Konsolidate/Categories/Failover/changer.sh
