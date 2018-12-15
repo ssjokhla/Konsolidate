@@ -110,7 +110,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/Register
 	mkdir /var/Konsolidate/Categories/Require
 	mkdir /var/Konsolidate/Categories/RSync
-	mkdir /var/Konsoliate/Categories/FileTransfer
+	mkdir /var/Konsolidate/Categories/FileTransfer
 	mkdir /var/Konsolidate/Categories/Sessions
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
