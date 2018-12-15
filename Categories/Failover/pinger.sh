@@ -11,10 +11,10 @@ if [ $? -eq 0 ]; then                           #If the ping went through, zero 
 else
 {
         echo "Currently not working: $(date)"
-        hostname -I > backEndIP.txt
+        hostname -I > /var/Konsolidate/Categories/Failover/backEndIP.txt
         #IP=$(hostname -I)                      #Grabs the IP of this system.
 
-        scp backEndIP.txt chris@192.168.0.100:/var/ChangeFile
+        scp backEndIP.txt qa@192.168.0.108:/var/Konsolidate/Categories/Failover/ChangeFile	
 }
 fi
 

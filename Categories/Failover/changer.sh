@@ -6,8 +6,8 @@ do
 
         echo "File is named $FILE"
 
-	IP=`cat $FILE`
-	sed -i "/.*BROKER_HOST =.*/c\BROKER_HOST = $IP" /var/Konsolidate/Categories/Require/testRabbitMQ.ini          # This will be used by all other VMs to allow for connection
+	IPR=`cat $FILE`
+	sed -i "/.*BROKER_HOST =.*/c\BROKER_HOST = $IPR" /var/Konsolidate/Categories/Require/testRabbitMQ.ini          # This will be used by all other VMs to allow for connection
 
         echo "Yay this worked"
 
