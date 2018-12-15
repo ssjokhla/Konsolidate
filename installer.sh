@@ -79,13 +79,19 @@ if [ "$output" == "$be" ]; then
 	cp Categories/Sessions/SessionFunctions.php /var/Konsolidate/Categories/Sessions/
 
 #Files within Startup directory
-        cp Categories/Startup/backendListeners.sh /var/Konsolidate/Categories/Startup
+        cp Categories/Startup/backendListeners.sh /var/Konsolidate/Categories/Startup/
         cp Categories/Startup/RunBackendListeners.service /var/Konsolidate/Categories/Startup/
+	cp Categories/Startup/failoverListener.sh /var/Konsolidate/Categories/Startup/
+	cp Categories/Startup/RunFailoverListener.service /var/Konsolidate/Categories/Startup
+	cp /var/Konsolidate/Categories/Startup/RunFailoverListener.service /etc/systemd/system
 	cp /var/Konsolidate/Categories/Startup/RunBackendListeners.service /etc/systemd/system/
 	systemctl daemon-reload
 	systemctl enable RunBackendListeners.service
 	systemctl stop RunBackendListeners.service
 	systemctl start RunBackendListeners.service
+	systemctl enable RunFailoverListener.service
+	systemctl stop RunFailoverListener.service
+	systemctl start RunFailoverListener.service
 
 #Files within Upload directory (currently none as of now)
 	
