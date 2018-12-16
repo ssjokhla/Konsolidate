@@ -32,6 +32,9 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 
+	chmod 777 /var/Konsolidate/Categories/RSync/FileTransfer
+	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
+
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
 #	cp -r newKonsolidate/Pending/* /var/KonsolidateTesting/Pending/
@@ -121,7 +124,8 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 	mkdir /var/www/html/uploads
-
+	
+	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
 	chmod 777 /var/www/html/uploads
 
 #Files for Extras/Pending/Trashed directory
