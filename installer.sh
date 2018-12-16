@@ -120,6 +120,9 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/Sessions
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
+	mkdir /var/www/html/uploads
+
+	chmod 777 /var/www/html/uploads
 
 #Files for Extras/Pending/Trashed directory
 	cp -r Extras/* /var/Konsolidate/Extras/
@@ -155,7 +158,7 @@ elif [ "$output" == "$fe" ]; then
 
 #Files within Upload directory
 	cp Categories/Upload/UploadProcess.php /var/www/html
-
+	cp -r Categories/Upload/uploads /var/www/html/
 #Files within View directory
 	cp Categories/View/viewReports.php /var/www/html
 
