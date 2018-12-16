@@ -138,8 +138,9 @@ elif [ "$output" == "$fe" ]; then
 #Files within Register directory
 	cp Categories/Register/RegistrationFunctions.php /var/Konsolidate/Categories/Register/
 	cp Categories/Register/registration.php /var/www/html/
-	cp Categories/Register/registrationChecker.php /var/www/html/
-
+	cp Categories/Register/RegistrationChecker.php /var/www/html/
+	cp Categories/Register/pRegistrationChecker.php /var/www/html/
+	cp Categories/Register/pregistration.php /var/www/html/
 #Files within Require directory
 	cp -r Categories/Require/* /var/Konsolidate/Categories/Require/
 

@@ -1,3 +1,4 @@
+
 <?php
 /*
 include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php');
@@ -52,7 +53,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
       <h1 style="color:#007bff;text-align:center">Register</h1><br>
 
 <!--	<form action = "" method = "get"> -->
-	<form action = "registrationChecker.php" method = "get">
+	<form action = "RegistrationChecker.php" method = "get">
 	<center>
 	<input type = text name = "username"  placeholder = "Username" required autocomplete = "off"/>
 	<br><br>
@@ -62,7 +63,6 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<p style="color:#007bff;text-align:center"><big>Choose your role:</big></p>
 		<div class="btn-group">
 		<select name="role" id="role" class="btn btn-lg btn-primary btn-block">
-			<option value="patient">Patient</option>
 			<option value="HCP">HCP</option>
 			<option value="researcher">Researcher</option>
 		</select>

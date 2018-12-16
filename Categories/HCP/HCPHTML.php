@@ -7,7 +7,7 @@ session_start();
 
 
 <?php
-if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
+if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,13 +33,13 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "hcp")){
 	</form>
 
 
-	<form action = "viewReports.php" method = "get">
+	<form action = "viewReports1.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" type = submit value = "View Reports" name = "reports">
 	</form>
 	<br>
 	<div class=test><br>
-        	<form action = "registration.php" method="get">
-       		<button class="btn btn-lg btn-primary btn-block" type="submit">Register Here </button>
+        	<form action = "pregistration.php" method="get">
+       		<button class="btn btn-lg btn-primary btn-block" type="submit">Register Patient Here </button>
       		</form>
       	</div>
 
