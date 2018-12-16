@@ -44,8 +44,8 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 		<font color=#007bff>Gender:</font>
 			<div class="btn-group">
 				<select name="gender" id="gender" class="btn btn-sm btn-primary btn-block">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
+					<option value="0">Male</option>
+					<option value="1">Female</option>
 				</select>
 			</div>
 			<br><br>

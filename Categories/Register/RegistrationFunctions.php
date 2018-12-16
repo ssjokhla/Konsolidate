@@ -64,11 +64,10 @@ function doPRegister($username,$password,$role,$group,$age,$gender,$TTS,$aHand,$
 	{
 	//	$rol = 'therapist';
 		//If username isn't in database registers user with the appropriate hash and role value
-		$newMemeber = "Insert into members (ID,username, password, role, therapist) VALUES ('$username','$username', SHA2('$password',512), '$role','$therapist')";
-		$PatientInfo = "Insert into patientInfo VALUES ('$username','$group','$age','$gender','$TTS','$aHand','$dHand','$lLocation')";
-		$PatientInfo = "Insert into patientInfo VALUES ('a','2','3','5','8','0','both','wrist')";
-		//$memberQuery= mysqli_query($con,$newMember);
-		$infoQuery =  mysqli_query($con,$PatientInfo);
+		$r = "Insert into members (ID, username, password, role, therapist) VALUE ('$username','$username',SHA2('$password',512), '$role','$therapist')";
+		$i = "Insert into patientInfo VALUES ('$username','$group','$age','$gender','$TTS','$aHand','$dHand','$lLocation')";
+		$tr= mysqli_query($con,$r);
+		$ti =  mysqli_query($con,$i);
 		echo "Successfully created Account!1";
 		return true;
 	}
