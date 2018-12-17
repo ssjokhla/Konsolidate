@@ -98,7 +98,7 @@ function devPackage($name, $path, $status, $PackageName)
         $IP = str_replace("\n", "", $IP);
         $SCP = $whoami."@".$IP;
         //Creating a new Client for RabbitMQ
-        $client = new rabbitMQClient("devRabbitMQ.ini", "depServer");
+        $client = new rabbitMQClient("depRabbitMQ.ini", "depServer");
         //New array to eventually send
         $request = array();
         $request['type'] = "package";
