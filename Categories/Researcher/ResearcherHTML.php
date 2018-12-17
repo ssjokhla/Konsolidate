@@ -26,6 +26,14 @@ session_start();
 	<div id="title">
 		<h1 style="color: blue;"><strong>R E S E A R C H E R S<strong></h1>
 		</div>
+
+		
+		<div class = "row">
+		<div class = "col-1">
+		</div>
+		<div class = "col-10">
+
+
 		  <div id="login">
 				<form action = "DownloadProcess.php" method = "get">
 					<h3 style="color:#007bff;text-align:center">Download Patient Data</h3>
@@ -34,6 +42,12 @@ session_start();
 				<form action = "logout.php" method = "get">
 					<br><input  class="btn btn-lg btn-primary btn-block" type = submit value = "Logout">
 				</form>
+
+
+		</div>
+		<div class = "col-1">
+		</div>
+		</div>
 </div>
 </body>
 </div>

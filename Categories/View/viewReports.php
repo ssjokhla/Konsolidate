@@ -34,6 +34,14 @@
 <h1 style="color: black;"><strong> <font color ="black"> P A T I E N T &nbsp  D A T A<strong></h1>
 </font>
 </div>
+
+
+	<div class = "row">
+	<div class = "col-1">
+	</div>
+	<div class = "col-10">
+
+
 	<div id="login">
     <h2>Filterable Table</h2>
   <p>Type something in the input field to search the table for first names, last names or emails:</p>
@@ -109,6 +117,13 @@ echo"</tbody>";
 <form action = "HCPHTML.php">
 <input class="btn btn-link btn-lg btn-block" type = submit value = "Back"/>
 </form>
+
+
+
+	</div>
+	<div class = "col-1">
+	</div>
+	</div>
 </div>
 </div>
 </div>
