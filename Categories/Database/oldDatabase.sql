@@ -156,7 +156,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES ('Nhi','Nhi','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','patient','testHCP'),('Patient2','Patient2','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','patient','testHCP'),('testHCP','testHCP','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','HCP','N/A'),('testPatient','testPatient','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','patient','testHCP'),('testResearcher','testResearcher','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','researcher','N/A');
+INSERT INTO `members` VALUES ('a','a','password','patient','testHCP'),('b','b','password','patient','testHCP'),('testHCP','testHCP','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','HCP','N/A'),('testResearcher','testResearcher','b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86','researcher','N/A');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,13 +169,13 @@ DROP TABLE IF EXISTS `patientInfo`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patientInfo` (
   `ID` varchar(255) NOT NULL,
-  `PatientGroup` int(11) NOT NULL,
+  `Patient Group` int(11) NOT NULL,
   `Age` int(11) NOT NULL,
   `Gender` int(11) NOT NULL,
-  `TimeSinceStroke` int(11) NOT NULL,
-  `AffectedHand` int(11) NOT NULL,
+  `Time Since Stroke` int(11) NOT NULL,
+  `Affected Hand` int(11) NOT NULL,
   `Handedness` varchar(10) NOT NULL,
-  `LesionLocation` varchar(255) NOT NULL,
+  `Lesion Location` varchar(255) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -186,7 +186,6 @@ CREATE TABLE `patientInfo` (
 
 LOCK TABLES `patientInfo` WRITE;
 /*!40000 ALTER TABLE `patientInfo` DISABLE KEYS */;
-INSERT INTO `patientInfo` VALUES ('Nhi',78,22,1,54,1,'both','heart'),('Patient2',17,12,0,18,0,'left','elbow'),('testPatient',1,21,0,30,0,'right','arm');
 /*!40000 ALTER TABLE `patientInfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-17 11:55:00
+-- Dump completed on 2018-12-15 18:44:46
