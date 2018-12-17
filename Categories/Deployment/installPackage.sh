@@ -14,5 +14,5 @@ do
 
 done
 
-/var/Konsolidate/Categories/Deployment/installPackage.sh
+sudo /var/Konsolidate/Categories/Deployment/installPackage.sh
 
