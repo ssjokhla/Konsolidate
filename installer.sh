@@ -13,6 +13,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/
 	mkdir /var/Konsolidate/Extras/
 	mkdir /var/Konsolidate/Pending
+	mkdir /var/Konsolidate/Pending/toInstall
 	mkdir /var/Konsolidate/Trashed
 	mkdir /var/Konsolidate/Pending
 
@@ -35,6 +36,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 
 	chmod 777 /var/Konsolidate/Pending
+	chmod 777 /var/Konsolidate/Pending/toInstall
 	chmod 777 /var/Konsolidate/Categories/RSync/FileTransfer
 	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
 
@@ -133,6 +135,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/
 	mkdir /var/Konsolidate/Extras/
 	mkdir /var/Konsolidate/Pending
+	mkdir /var/Konsolidate/Pending/toInstall
 	mkdir /var/Konsolidate/Trashed
 
 	mkdir /var/Konsolidate/Categories/Deployment
@@ -148,6 +151,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/www/html/uploads
 	
 	chmod 777 /var/Konsolidate/Pending
+	chmod 777 /var/Konsolidate/Pending/toInstall
 	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
 	chmod 777 /var/www/html/uploads
 
