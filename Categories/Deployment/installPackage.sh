@@ -13,5 +13,5 @@ do
 
 done
 
-/var/Konsolidate/Categories/Deployment/installer.sh
+/var/Konsolidate/Categories/Deployment/installPackage.sh
 
