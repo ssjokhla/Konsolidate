@@ -29,7 +29,9 @@ function push($destination, $category)
 	}
 
 	//Checks username and hashes the password to chek database
-	$s = "select * from packages where version = (SELECT MAX(Version) FROM packages where Name = '$category')";
+	$s = "select * from packages where Name = '$category' and version = (SELECT MAX(Version) FROM packages where Name = '$category')";
+
+	//$s = "select * from packages where version = (SELECT MAX(Version) FROM packages where Name = '$category')";
 	echo "SQL Statement: $s";
 	$t = mysqli_query($con, $s);
 	$row = mysqli_fetch_row($t);
