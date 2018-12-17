@@ -47,7 +47,7 @@
   <p>Type something in the input field to search the table for first names, last names or emails:</p>
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
-		<div class="table table-striped table table-hover table table-condensed">
+		<div class="table table-striped table table-hover table table-condensed table-responsive">    
 <table class="table">
   <thead>
   <tr>
