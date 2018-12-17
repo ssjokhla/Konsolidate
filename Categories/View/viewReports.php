@@ -30,10 +30,6 @@
 <div class="container">
 <div class="center">
 <div class = "content">
-		<div id="title">
-<h1 style="color: black;"><strong> <font color ="black"> P A T I E N T &nbsp  D A T A<strong></h1>
-</font>
-</div>
 
 
 	<div class = "row">
@@ -43,8 +39,8 @@
 
 
 	<div id="login">
-    <h2>Filterable Table</h2>
-  <p>Type something in the input field to search the table for first names, last names or emails:</p>
+    <h2 align="center"> PATIENT INFO </h2>
+  <p>Type something in the input field to search the table for any of the columns:</p>
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
 		<div class="table table-striped table table-hover table table-condensed table-responsive">    
