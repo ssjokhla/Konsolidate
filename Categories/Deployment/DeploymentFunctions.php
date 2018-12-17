@@ -3,6 +3,68 @@ require_once('/var/Konsolidate/Categories/Require/path.inc');
 require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
 require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
 
+#This function will send a message through rabbit with inforation about which version of a package to rollback
+function rollback($destination, $category)
+{
+	//Creating a new Client for RabbitMQ
+	$client = new rabbitMQClient("depRabbitMQ.ini", "pushServer");
+	//New array to eventually send
+	$request = array();
+	$request['type'] = "rollback";
+	$request['destination'] = $destination;
+	$request['category'] = $category;
+	$client->send_request($request);
+
+}
+
+function roll($destination, $category)
+{
+	$con = mysqli_connect("localhost", "admin", "password", "masterDB");
+	mysqli_select_db($con, "masterDB");
+
+	//Checking if connected to database
+	if (!$con){
+		logError("Connection Failed: " . mysqli_connect_error());
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+
+	//Checks username and hashes the password to chek database
+	$s = "select * from packages where Name = '$category' and version = (SELECT MAX(Version) FROM packages where Name = '$category')";
+        $version = mysqli_query($con, $s);
+        $row = mysqli_fetch_row($version);
+        $versionNum = $row[1];
+	$newVersion = $versionNum - 1;
+	$v = "select * from packages where Name = '$category' and version = '$newVersion'";
+
+	echo "SQL Statement: $v";
+	$t = mysqli_query($con, $v);
+	$row = mysqli_fetch_row($t);
+	if($destination == "PRFE")
+	{
+		echo "Sending to Prod FrontEnd";
+	}
+	elseif($destination == "PRBE")
+	{
+		echo "Sending to Prod Backend";
+	}
+	elseif($destination == "QAFE")
+	{
+		echo "Sending to QA Frontend";
+	}
+	elseif($destination == "QABE")
+	{
+		//192.168.0.104
+		shell_exec("scp $row[2] qa@192.168.0.108:/var/Konsolidate/Pending");
+		echo "\n";
+		echo "Sending to QA Backend";
+	}
+	else
+	{
+		return "N/A";
+	}
+}
+
 #This function will send a message through rabbit with inforation about which version of a package to update
 function pushUpdate($destination, $category)
 {
@@ -72,7 +134,7 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
                 die("Connection failed: " . mysqli_connect_error());
         }
 
-        $v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = '$name')";
+        $v = "select Version from packages where Name = $name and version = (Select MAX(Version) FROM packages where Name = '$name')";
         $version = mysqli_query($con, $v);
         $row = mysqli_fetch_row($version);
         $versionNum = $row[0];

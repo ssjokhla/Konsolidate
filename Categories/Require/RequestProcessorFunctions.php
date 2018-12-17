@@ -49,6 +49,8 @@ function requestProcessor($request)
 		return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
 	case "pushUpdate":
 		return push($request['destination'],$request['category']);
+	case "rollback":
+		return roll($request['destination'],$request['category']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
