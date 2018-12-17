@@ -2,7 +2,6 @@
 require_once('/var/Konsolidate/Categories/Require/path.inc');
 require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
 require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
-include('/var/Konsolidate/Categories/Require/RequestProcessorFunctions.php');
 
 #This function will send a message through rabbit with inforation about which version of a package to update
 function pushUpdate($destination, $category)
@@ -71,7 +70,7 @@ function dePackage($name, $path, $status, $SCP, $PackageName)
                 die("Connection failed: " . mysqli_connect_error());
         }
 
-        $v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = 'test')";
+        $v = "select Version from packages where version = (Select MAX(Version) FROM packages where Name = '$name')";
         $version = mysqli_query($con, $v);
         $row = mysqli_fetch_row($version);
         $versionNum = $row[0];
