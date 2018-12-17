@@ -29,7 +29,7 @@ function logError($message)
 function pushUpdate($destination, $category)
 {
 	//Creating a new Client for RabbitMQ
-	$client = new rabbitMQClient("testRabbitMQ.ini", "pushUpdate");
+	$client = new rabbitMQClient("testRabbitMQ.ini", "pushServer");
 	//New array to eventually send
 	$request = array();
 	$request['type'] = "pushUpdate";

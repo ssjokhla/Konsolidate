@@ -15,6 +15,6 @@ echo $name;
 echo $version;
 echo $description;
 
-devPackage($name, $version, "~/IT490/Konsolidate/Bundler/files", "", $description);
+devPackage($name, $version, "/var/Konsolidate/Categories/Bundler/files", "", $description);
 
 ?>
