@@ -7,7 +7,7 @@ include('/var/Konsolidate/Categories/Require/RequestProcessorFunctions.php');
 
 
 $server = new rabbitMQServer("depRabbitMQ.ini","pushServer");
-echo "depRabbitMQServer BEGIN".PHP_EOL;
+echo "pushRabbitMQServer BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
-echo "depRabbitMQServer END".PHP_EOL;
+echo "pushRabbitMQServer END".PHP_EOL;
 exit();
