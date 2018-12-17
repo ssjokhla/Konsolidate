@@ -7,7 +7,7 @@ require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
 function pushUpdate($destination, $category)
 {
 	//Creating a new Client for RabbitMQ
-	$client = new rabbitMQClient("testRabbitMQ.ini", "pushUpdate");
+	$client = new rabbitMQClient("devRabbitMQ.ini", "pushUpdate");
 	//New array to eventually send
 	$request = array();
 	$request['type'] = "pushUpdate";
@@ -98,7 +98,7 @@ function devPackage($name, $path, $status, $PackageName)
         $IP = str_replace("\n", "", $IP);
         $SCP = $whoami."@".$IP;
         //Creating a new Client for RabbitMQ
-        $client = new rabbitMQClient("testRabbitMQ.ini", "devServer");
+        $client = new rabbitMQClient("devRabbitMQ.ini", "devServer");
         //New array to eventually send
         $request = array();
         $request['type'] = "package";

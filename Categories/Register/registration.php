@@ -45,6 +45,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 </head>
 <body>
 	<div class="content">
+<div class="center">
 <div id="title">
 	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
 </div>
@@ -77,7 +78,7 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
 </div>
-
+</div>
 </div>
 </body>
 </html>

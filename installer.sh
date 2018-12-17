@@ -103,7 +103,7 @@ if [ "$output" == "$be" ]; then
 
 #Files within View directory
 	cp Categories/View/viewRabbitMQServer.php /var/Konsolidate/Categories/View/
-
+	cp Categories/View/ViewFunctions.php /var/Konsolidate/Categories/View/
 	echo "YOU BACKEND"
 }
 elif [ "$output" == "$fe" ]; then

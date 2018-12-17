@@ -22,6 +22,7 @@ session_start();
 </head>
 <center>
 <body>
+	<div class="center">
 	<div id="title">
 		<h1 style="color: blue;"><strong>R E S E A R C H E R S<strong></h1>
 		</div>
@@ -35,6 +36,7 @@ session_start();
 				</form>
 </div>
 </body>
+</div>
 </div>
 </html>
 
