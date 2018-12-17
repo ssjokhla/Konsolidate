@@ -64,6 +64,7 @@ if [ "$output" == "$be" ]; then
 	cp Categories/Deployment/Packager.sh /var/Konsolidate/Categories/Deployment/
 	cp Categories/Deployment/pushUpdate.php /var/Konsolidate/Categories/Deployment/
 	cp Categories/Deployment/pushUpdate.sh /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/installPackage.sh /var/Konsolidate/Categories/Deployment/
 
 #Files within Download directory
 	cp Categories/Download/downRabbitMQServer.php /var/Konsolidate/Categories/Download/
@@ -93,9 +94,17 @@ if [ "$output" == "$be" ]; then
         cp Categories/Startup/backendListeners.sh /var/Konsolidate/Categories/Startup/
         cp Categories/Startup/RunBackendListeners.service /var/Konsolidate/Categories/Startup/
 	cp Categories/Startup/failoverListener.sh /var/Konsolidate/Categories/Startup/
-	cp Categories/Startup/RunFailoverListener.service /var/Konsolidate/Categories/Startup
-	cp /var/Konsolidate/Categories/Startup/RunFailoverListener.service /etc/systemd/system
+	cp Categories/Startup/RunFailoverListener.service /var/Konsolidate/Categories/Startup/
+	cp Categories/Startup/packageListener.sh /var/Konsolidate/Categories/Startup/
+	cp Categories/Startup/RunPackageListener.service /var/Konsolidate/Categories/Startup/
+
+
+	cp /var/Konsolidate/Categories/Startup/RunFailoverListener.service /etc/systemd/system/
 	cp /var/Konsolidate/Categories/Startup/RunBackendListeners.service /etc/systemd/system/
+	cp /var/Konsolidate/Categories/Startup/RunPackageListener.service /etc/systemd/system/
+
+
+
 	systemctl daemon-reload
 	systemctl enable RunBackendListeners.service
 	systemctl stop RunBackendListeners.service
@@ -103,6 +112,9 @@ if [ "$output" == "$be" ]; then
 	systemctl enable RunFailoverListener.service
 	systemctl stop RunFailoverListener.service
 	systemctl start RunFailoverListener.service
+	systemctl enable RunPackageListener.service
+	systemctl stop RunPackageListener.service
+	systemctl start RunPackageListener.service
 
 #Files within Upload directory (currently none as of now)
 	
@@ -129,6 +141,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/RSync
 	mkdir /var/Konsolidate/Categories/FileTransfer
 	mkdir /var/Konsolidate/Categories/Sessions
+	mkdir /var/Konsolidate/Categories/Startup
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 	mkdir /var/www/html/uploads
@@ -149,6 +162,7 @@ elif [ "$output" == "$fe" ]; then
         cp Categories/Deployment/Packager.sh /var/Konsolidate/Categories/Deployment/
         cp Categories/Deployment/pushUpdate.php /var/Konsolidate/Categories/Deployment/
         cp Categories/Deployment/pushUpdate.sh /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/installPackage.sh /var/Konsolidate/Categories/Deployment/
 
 #Files within Download directory
 	cp Categories/Download/DownloadProcess.php /var/www/html/
@@ -195,6 +209,20 @@ elif [ "$output" == "$fe" ]; then
 
 #Files within Failover directory
 	cp Categories/Failover/* /var/Konsolidate/Categories/Failover
+
+#Files within Startup directory
+        cp Categories/Startup/packageListener.sh /var/Konsolidate/Categories/Startup/
+        cp Categories/Startup/RunPackageListener.service /var/Konsolidate/Categories/Startup/
+
+
+        cp /var/Konsolidate/Categories/Startup/RunPackageListener.service /etc/systemd/system/
+
+
+
+        systemctl daemon-reload
+        systemctl enable RunPackageListener.service
+        systemctl stop RunPackageListener.service
+        systemctl start RunPackageListener.service
 
 
 	echo "YOU FRONTEND"
