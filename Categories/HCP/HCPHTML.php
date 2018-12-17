@@ -27,6 +27,13 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 <div id="title">
 	<h1 style="color: white;"><strong>H C P<strong></h1>
 	</div>
+	<div class ="row">
+
+	<div class ="col-1">
+
+	</div>
+
+	<div class ="col-10">
 	  <div id="login">
 	<form action = "UploadProcess.php" method = "post" enctype = "multipart/form-data">
 		  <h1 style="color:#007bff;text-align:center">Choose a File</h1>
@@ -50,6 +57,13 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 	<form action = "logout.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" ondragover="" type = submit value = "Logout">
 	</form>
+</div>
+</div>
+
+<div class ="col-1">
+
+</div>
+
 
 <?php
 

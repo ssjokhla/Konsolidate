@@ -1,32 +1,11 @@
 body{
-  background: linear-gradient(to left, #43cea2, #185a9d);
+	background: linear-gradient(to left, #43cea2, #185a9d);
   height: 100vh;
   font: normal 16px Arial, Helvetica, sand-serif;
   color:#333;
 }
 
 #title{
-/*
-  background:#ffff
-  opacity: 10;
-  padding:2em;
-  position:absolute;
-  border-radius: 15px;
-  top: 200px;
-  left:750px;
-  text-align: center;
-*/
-/*
-  background:#ffff
-  opacity: 10;
-  padding:2em;
-
-  border-radius: 15px;
-  float: right;
-  clear:right;
-  width: 50%;
-  text-align: center;
-  */
   padding:2em;
   border-radius: 15px;
 
@@ -96,4 +75,49 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+}
+/* MEDIA QUERIES */
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
 }
