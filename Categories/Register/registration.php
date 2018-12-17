@@ -50,6 +50,13 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
 </div>
 
+
+	<div class = "row">
+	<div class = "col-1">
+	</div>
+	<div class = "col-10">
+
+
 		<div id="login">
       <h1 style="color:#007bff;text-align:center">Register</h1><br>
 
@@ -77,6 +84,12 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<form action = "login.html" method = "get">
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
+
+	
+	</div>
+	<div class = "col-1">
+	</div>
+	</div>
 </div>
 </div>
 </div>
