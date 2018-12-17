@@ -10,6 +10,7 @@ echo "updatingQA Script ran\n";
 $destination = ($argv[1]);
 $category = ($argv[2]);
 
-echo "$category";
+echo "Destination = $destindation";
+echo "Category = $category";
 
 rollback($destination, $category);
