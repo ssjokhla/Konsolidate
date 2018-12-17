@@ -10,4 +10,4 @@ destination="${destination,,}"
 printf "Please enter the package category you want to update: "
 read category
 
-php ~/IT490/Konsolidate/rabbitmqphp_example/pushUpdate.php $destination $category $version
+php /var/Konsolidate/Categories/Deployment/pushUpdate.php $destination $category

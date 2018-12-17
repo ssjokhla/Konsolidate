@@ -1,9 +1,9 @@
 <?php
 
-require_once('path.inc');
-require_once('get_host_info.inc');
-require_once('rabbitMQLib.inc');
-include('myFunctions.php');
+require_once('/var/Konsolidate/Categories/Require/path.inc');
+require_once('/var/Konsolidate/Categories/Require/get_host_info.inc');
+require_once('/var/Konsolidate/Categories/Require/rabbitMQLib.inc');
+include('/var/Konsolidate/Categories/Deployment/DeploymentFunctions.php');
 
 echo "updatingQA Script ran\n";
 
