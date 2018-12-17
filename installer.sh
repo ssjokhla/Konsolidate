@@ -59,6 +59,7 @@ if [ "$output" == "$be" ]; then
 
 #Files within Deployment directory
 	cp Categories/Deployment/depRabbitMQServer.php /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/pushRabbitMQServer.php /var/Konsolidate/Categories/Deployment/
 	cp Categories/Deployment/DeploymentFunctions.php /var/Konsolidate/Categories/Deployment/
 	cp Categories/Deployment/devPackage.php /var/Konsolidate/Categories/Deployment/
 	cp Categories/Deployment/Packager.sh /var/Konsolidate/Categories/Deployment/
