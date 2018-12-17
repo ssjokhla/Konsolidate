@@ -14,7 +14,9 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Extras/
 	mkdir /var/Konsolidate/Pending
 	mkdir /var/Konsolidate/Trashed
+	mkdir /var/Konsolidate/Pending
 
+	
 	mkdir /var/Konsolidate/Categories/Bundler
 	mkdir /var/Konsolidate/Categories/Database
 	mkdir /var/Konsolidate/Categories/Deployment
@@ -32,6 +34,7 @@ if [ "$output" == "$be" ]; then
 	mkdir /var/Konsolidate/Categories/Failover
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 
+	chmod 777 /var/Konsolidate/Pending
 	chmod 777 /var/Konsolidate/Categories/RSync/FileTransfer
 	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
 
@@ -56,6 +59,11 @@ if [ "$output" == "$be" ]; then
 
 #Files within Deployment directory
 	cp Categories/Deployment/depRabbitMQServer.php /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/DeploymentFunctions.php /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/devPackage.php /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/Packager.sh /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/pushUpdate.php /var/Konsolidate/Categories/Deployment/
+	cp Categories/Deployment/pushUpdate.sh /var/Konsolidate/Categories/Deployment/
 
 #Files within Download directory
 	cp Categories/Download/downRabbitMQServer.php /var/Konsolidate/Categories/Download/
@@ -114,7 +122,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Pending
 	mkdir /var/Konsolidate/Trashed
 
-
+	mkdir /var/Konsolidate/Categories/Deployment
 	mkdir /var/Konsolidate/Categories/Log
 	mkdir /var/Konsolidate/Categories/Register
 	mkdir /var/Konsolidate/Categories/Require
@@ -125,6 +133,7 @@ elif [ "$output" == "$fe" ]; then
 	mkdir /var/Konsolidate/Categories/Failover/ChangeFile
 	mkdir /var/www/html/uploads
 	
+	chmod 777 /var/Konsolidate/Pending
 	chmod 777 /var/Konsolidate/Categories/Failover/ChangeFile
 	chmod 777 /var/www/html/uploads
 
@@ -133,7 +142,13 @@ elif [ "$output" == "$fe" ]; then
 #	cp -r newKonsolidate/Pending/* /var/KonsolidateTesting/Pending/
 	cp -r Trashed/* /var/Konsolidate/Trashed/
 
-
+#Files within Deployment directory
+        cp Categories/Deployment/depRabbitMQServer.php /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/DeploymentFunctions.php /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/devPackage.php /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/Packager.sh /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/pushUpdate.php /var/Konsolidate/Categories/Deployment/
+        cp Categories/Deployment/pushUpdate.sh /var/Konsolidate/Categories/Deployment/
 
 #Files within Download directory
 	cp Categories/Download/DownloadProcess.php /var/www/html/
