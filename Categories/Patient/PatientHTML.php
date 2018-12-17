@@ -20,8 +20,8 @@ session_start();
 <link href="boostrapcore.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<center>
 <body>
+	<div class="center">
 	<div id="title">
 		<h1 style="color: white;"><strong>P A T I E N T <strong></h1>
 		</div>
@@ -32,6 +32,7 @@ session_start();
 				</form>
 	</div>
 </body>
+</div>
 </div>
 </html>
 

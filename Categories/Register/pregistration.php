@@ -18,6 +18,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<div class="center">
 	<div class="content">
 <div id="title">
 	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
@@ -81,7 +82,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
 </div>
-
+</div>
 </div>
 </body>
 </html>

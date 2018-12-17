@@ -5,6 +5,7 @@ require_once('rabbitMQLib.inc');
 #include('../Download/DownloadFunctions.php');
 #include('../Bundler/PackageFunctions.php');
 #include('../Log/logFunctions.php');
+include('/var/Konsolidate/Categories/View/ViewFunctions.php');
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 include('/var/Konsolidate/Categories/Register/RegistrationFunctions.php');
 include('/var/Konsolidate/Categories/Deployment/DeploymentFunctions.php');

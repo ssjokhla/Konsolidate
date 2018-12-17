@@ -11,7 +11,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<div class="content">
+
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +21,9 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 <link href="boostrapcore.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
+<body>
+<div class="container-fluid">
+<div class="center">
 <div id="title">
 	<h1 style="color: white;"><strong>H C P<strong></h1>
 	</div>
@@ -33,7 +36,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 	</form>
 
 
-	<form action = "viewReports1.php" method = "get">
+	<form action = "viewReports.php" method = "get">
 		<br><input class="btn btn-lg btn-primary btn-block" type = submit value = "View Reports" name = "reports">
 	</form>
 	<br>
@@ -61,6 +64,8 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 </div>
 </body>
 </div>
+</div>
+
 </html>
 <?php
 	#encapsulating HTML so that gateKeeper works
