@@ -3,7 +3,7 @@
 echo "This script will deploy a package to QA."
 echo ""
 
-printf "Please enter the destination of the package [QABE/QAFE/PRBE/PRFE]"
+printf "Please enter the destination of the package [QABE/QAFE/PRBE/PRFE]: "
 read destination
 destination="${destination^^}"
 

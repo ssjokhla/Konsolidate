@@ -30,12 +30,15 @@ function roll($destination, $category)
 
 
 	//Checks username and hashes the password to chek database
-	$s = "select * from packages where Name = '$category' and version = (SELECT MAX(Version) FROM packages where Name = '$category')";
+	$s = "select * from packages where name = '$category' and version = (SELECT MAX(Version) FROM packages where Name = '$category')";
         $version = mysqli_query($con, $s);
         $row = mysqli_fetch_row($version);
         $versionNum = $row[1];
 	$newVersion = $versionNum - 1;
-	$v = "select * from packages where Name = '$category' and version = '$newVersion'";
+	$v = "select * from packages where Name = '$category' and version = '$newVersion';
+		UPDATE packages 
+		SET Status = 'Broken'
+		WHERE version = '$versionNum' and name = '$category';";
 
 	echo "SQL Statement: $v";
 	$t = mysqli_query($con, $v);
