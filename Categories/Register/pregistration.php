@@ -24,6 +24,15 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 	<h1 style="color: Blue;"><strong>K O N S O L I D A T E<strong></h1>
 </div>
 
+
+	<div class = "row">
+
+	<div class = "col-1">
+	</div>
+
+	<div class = "col-10">
+
+
 		<div id="login">
       <h1 style="color:#007bff;text-align:center">Register a Patient</h1><br>
 
@@ -81,6 +90,12 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 	<form action = "HCPHTML.php" method = "get">
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
+
+
+	</div>
+	<div class = "col-1">
+	</div>
+	</div>
 </div>
 </div>
 </div>
