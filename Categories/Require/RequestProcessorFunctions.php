@@ -20,7 +20,7 @@ function requestProcessor($request)
 	var_dump($request);
 	if(!isset($request['type']))
 	{
-	return "ERROR: unsupported message type";
+		return "ERROR: unsupported message type";
 	}
 	switch ($request['type'])
 	{
@@ -32,23 +32,23 @@ function requestProcessor($request)
 	case "log":
 		$message = "IP_Address: " . $request['IP_ADDR'] . "Date: " . $request['DATE'] . "Message: " . $request['message'] . "\n\n";
 		error_log($message,3,"/var/Konsolidate/Categories/Log/Logs/master.log");
-		case "reg":
-		     if($request['role'] == "patient")
-            {
-		           return doPRegister($request['username'],$request['password'],$request['role'],$request['group'],$request['age'],$request['gender'],$request['TTS'],$request['aHand'],$request['dHand'],$request['lLocation'],$request['therapist']);
-		        }
-		          else
-		         {
-		           return doRegister($request['username'],$request['password'],$request['role']);
-		        }
+	case "reg":
+		if($request['role'] == "patient")
+		{
+			return doPRegister($request['username'],$request['password'],$request['role'],$request['group'],$request['age'],$request['gender'],$request['TTS'],$request['aHand'],$request['dHand'],$request['lLocation'],$request['therapist']);
+		}
+		else
+		{
+			return doRegister($request['username'],$request['password'],$request['role']);
+		}
 	case "view":
 		return viewReports($request['role']);
 	case "down":
 		return doDownload();
 	case "package":
-    return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
-  case "pushUpdate":
-  	return push($request['destination'],$request['category']);
+		return dePackage($request['name'],$request['path'],$request['status'],$request['SCP'],$request['PackageName']);
+	case "pushUpdate":
+		return push($request['destination'],$request['category']);
 	}
 	return array("returnCode" => '0', 'message'=>"Server received request and processed");
 }
