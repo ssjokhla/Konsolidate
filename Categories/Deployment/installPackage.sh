@@ -9,6 +9,7 @@ do
 	sleep 3        
         echo "File is named $FILE"
 	tar -C /var/Konsolidate/Pending/toInstall -zxvf /var/Konsolidate/Pending/$FILE
+	cp -r /var/Konsolidate/Pending/toInstall/* /
 	rm -r /var/Konsolidate/Pending/toInstall/*
 
 done
