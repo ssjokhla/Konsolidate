@@ -23,9 +23,9 @@ if(isset($_FILES['myFile']))
 		echo " <br>";
 		echo $file_destination;
 		echo "<br>";
-		echo $file_tmp;	
+		echo $file_tmp;
 		echo "<br>";
-	
+
 		if(move_uploaded_file($file_tmp, $file_destination))
 		{
 			echo $file_destination;
@@ -33,9 +33,9 @@ if(isset($_FILES['myFile']))
 		else {
 			echo "failure";
 		     }
-	
+
 	}
-	
+
 	else
 	{
 		echo " You entered wrong file type";
@@ -54,4 +54,5 @@ $filename = $_FILES['myFile']['name'];
 echo "File [" . $_FILES['myFile']['name'] . "] has been successfully uploaded!";
 copy($file,'/var/www/html/uploads/');
 echo file_get_contents($file);
+pageLoader("HCPHTML.html");
 ?>

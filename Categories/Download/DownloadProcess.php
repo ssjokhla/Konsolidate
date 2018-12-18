@@ -2,8 +2,8 @@
 
 include('/var/Konsolidate/Categories/Download/DownloadFunctions.php');
 //include('/home/qa/Konsolidate/rabbitmqphp_example/myFunctions.php');
-require_once('/var/Konsolidate/Categories/Require/testRabbitMQ.ini');
-include('/var/Konsolidate/Categories/Download/DownloadFunctions.php');
+
+
 
 session_start();
 echo "Session started";

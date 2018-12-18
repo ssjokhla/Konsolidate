@@ -9,6 +9,7 @@ include('/var/Konsolidate/Categories/View/ViewFunctions.php');
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 include('/var/Konsolidate/Categories/Register/RegistrationFunctions.php');
 include('/var/Konsolidate/Categories/Deployment/DeploymentFunctions.php');
+include('/var/Konsolidate/Categories/Download/DownloadFunctions.php');
 //$test = $_SERVER['REMOTE_ADDR'];
 //Danh was here.
 

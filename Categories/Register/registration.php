@@ -81,11 +81,11 @@ include('/home/cong-danh/IT490/Konsolidate/rabbitmqphp_example/myFunctions.php')
 	<br><br><input class="btn btn-lg btn-primary btn-block" type = submit name = "Register" value = "Register"> <br>
 	</form>
 
-	<form action = "login.html" method = "get">
+	<form action = "index.html" method = "get">
 	<input class="btn btn-lg btn-primary btn-block" type = submit value = "Back"/>
 	</form>
 
-	
+
 	</div>
 	<div class = "col-1">
 	</div>

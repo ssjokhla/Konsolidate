@@ -6,7 +6,7 @@ session_start();
 
 
 <?php
-	if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "researcher")){
+	if(gateKeeperLogin("index.html") && gateKeeperRole("index.html", "researcher")){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ session_start();
 		<h1 style="color: blue;"><strong>R E S E A R C H E R S<strong></h1>
 		</div>
 
-		
+
 		<div class = "row">
 		<div class = "col-1">
 		</div>

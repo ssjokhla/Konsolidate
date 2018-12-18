@@ -2,7 +2,7 @@
 
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
-if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
+if(gateKeeperLogin("index.html") && gateKeeperRole("index.html", "HCP")){
 
 ?>
 <!DOCTYPE html>
@@ -59,7 +59,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 				</select>
 			</div>
 			<br><br>
-			<font color=#007bff>Day of Stroke:</font>
+			<font color=#007bff>Days since Stroke:</font>
 		<input type = number name = "TTS" required autocomplete = "off"/>
 			<br><br>
 				<font color=#007bff> Affected Hand:</font>
@@ -80,7 +80,7 @@ if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
 					</div>
 				<br><br>
 		</div>
-			<input type = password name = "lLocation" placeholder = "Lesion Location" required autocomplete = "off"/>
+			<input type = text name = "lLocation" placeholder = "Lesion Location" required autocomplete = "off"/>
 
 
 

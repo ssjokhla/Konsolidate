@@ -7,7 +7,7 @@ session_start();
 
 
 <?php
-if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
+if(gateKeeperLogin("index.html") && gateKeeperRole("index.html", "HCP")){
 ?>
 <!DOCTYPE html>
 <html lang="en">

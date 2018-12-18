@@ -2,8 +2,8 @@
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
 
-gateKeeperLogin("login.html");
-//gateKeeperRole("login.html");
+gateKeeperLogin("index.html");
+//gateKeeperRole("index.html");
 $_SESSION = array();
 
 session_destroy();
@@ -11,5 +11,5 @@ session_destroy();
 setcookie("givenName", "", time() - 3600, "/");
 
 print "Session has been terminated.";
-pageLoader("login.html");
+pageLoader("index.html");
 ?>

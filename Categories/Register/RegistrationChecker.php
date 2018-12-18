@@ -19,11 +19,11 @@ if(isset($_GET['Register']))
 	echo $payload;
 	if($payload==true)
 	{
-		pageLoader("login.html");
+		pageLoader("index.html");
 	}
 	else
 	{
-		pageLoader("registration.html");
+		pageLoader("registration.php");
 		logError("Failed registration because username already exists");
 	}
 }

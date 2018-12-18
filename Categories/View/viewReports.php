@@ -33,9 +33,9 @@
 
 
 	<div class = "row">
-	<div class = "col-1">
+	<div class = "col-3">
 	</div>
-	<div class = "col-10">
+	<div class = "col-6">
 
 
 	<div id="login">
@@ -43,7 +43,7 @@
   <p>Type something in the input field to search the table for any of the columns:</p>
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
-		<div class="table table-striped table table-hover table table-condensed table-responsive">    
+		<div class="table table-striped table table-hover table table-condensed table-responsive">
 <table class="table">
   <thead>
   <tr>
@@ -55,6 +55,7 @@
     <th>Affected Hand</th>
     <th>Dominant Hand</th>
     <th>Lesion Locations</th>
+		<th>Therapist</th>
   </tr>
 </thead>
 <?php
@@ -70,7 +71,8 @@
 	$response = $client->send_request($request);
 	$payload = json_encode($response);
 	$array = json_decode($payload, true);
-//echo "<hr>".$array[ID][0]."<hr> <hr>".$array[ID][1]."<hr>";
+	//echo "<hr>".$array[ID][0]."<hr> <hr>".$array[ID][1]."<hr>";
+//	print_r($array);
   $count = count($array[ID]);
   //echo $count;
   echo "<tbody id='myTable'>";
@@ -103,6 +105,7 @@
     <td>". $hand. "</td>
     <td>". $array[Handedness][$x]. "</td>
     <td>". $array[LesionLocation][$x]. "</td>
+		<td>". $array[Therapist][$x]. "</td>
   </tr>";
   }
 
@@ -117,7 +120,7 @@ echo"</tbody>";
 
 
 	</div>
-	<div class = "col-1">
+	<div class = "col-3">
 	</div>
 	</div>
 </div>

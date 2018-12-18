@@ -21,9 +21,9 @@ else
 }
 $request = array();
 $request['type'] = "login";
-$request['username'] = $_GET['username'];
-$_SESSION["user1"] = $_GET['username'];
-$request['password'] = $_GET['password'];
+$request['username'] = $_POST['username'];
+$_SESSION["user1"] = $_POST['username'];
+$request['password'] = $_POST['password'];
 $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);
@@ -55,12 +55,12 @@ switch($payload)
 	case '"HCP"':
 		$_SESSION["logged"] = true;			// Logging the HCP user
 		$_SESSION["user"] = "HCP";
-		$_SESSION["Therapist"] = $_GET['username'];
+		$_SESSION["Therapist"] = $_POST['username'];
 		echo "Successful HCP Login \n Redirecting now...";
 		pageLoader("HCPHTML.php");
 		break;
 	default:
 		echo "Failed Login!  Returning to Homepage.";
-		pageLoader("login.html");
+		pageLoader("index.html");
 }
 ?>

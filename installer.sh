@@ -193,7 +193,7 @@ elif [ "$output" == "$fe" ]; then
 	cp Categories/Sessions/SessionFunctions.php /var/Konsolidate/Categories/Sessions/
 	cp Categories/Sessions/loginRequest.php /var/www/html/
 	cp Categories/Sessions/logout.php /var/www/html/
-
+	cp Categories/Sessions/index.html /var/www/html/
 #Files within Upload directory
 	cp Categories/Upload/UploadProcess.php /var/www/html
 	cp -r Categories/Upload/uploads /var/www/html/

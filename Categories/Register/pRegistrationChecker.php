@@ -2,7 +2,7 @@
 
 include('/var/Konsolidate/Categories/Sessions/SessionFunctions.php');
 session_start();
-if(gateKeeperLogin("login.html") && gateKeeperRole("login.html", "HCP")){
+if(gateKeeperLogin("index.html") && gateKeeperRole("index.html", "HCP")){
 
 ?>
 
@@ -46,7 +46,7 @@ if(isset($_GET['pRegister']))
 	}
 	else
 	{
-		pageLoader("pregistration.html");
+		pageLoader("pregistration.php");
 		logError("Failed registration because username already exists");
 	}
 
